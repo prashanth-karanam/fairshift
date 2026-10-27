@@ -1,351 +1,309 @@
 import React, { useState, useMemo } from 'react';
-import { MapPin, Search, Clock, ChevronDown, Check, Flame, Zap, ArrowUpDown } from 'lucide-react';
+import { MapPin, Search, Clock, ChevronDown, Check, Flame, Zap, ArrowUpDown, Bookmark, ShieldCheck, DollarSign } from 'lucide-react';
 
 const MOCK_JOBS = [
   {
     id: 1,
-    company: 'Metro Construction Co.',
-    title: 'General Laborer',
-    pay: 28,
-    location: 'Downtown Industrial Yard',
-    distance: 2.4,
-    date: 'Tomorrow',
-    time: '6:00 AM – 2:00 PM',
-    hours: 8,
+    company: 'Apex Infra Site 4B',
+    title: 'Welder / Helper Required',
+    pay: 950,
+    unit: '/ Day (8.5h)',
+    location: 'MIDC Industrial Gate 2, Navi Mumbai',
+    distance: 1.8,
+    time: '08:00 AM – 04:30 PM',
+    sector: 'CONSTRUCTION',
     status: 'URGENT',
-    slots: '2 of 8 left',
+    slots: 'Starts in 2h • 2 Spots Left',
+    rating: 4.9,
+    reviews: 142,
+    overtime: '+₹120/h Overtime',
+    perks: ['Guaranteed Escrow', 'Free Lunch & PPE', 'Daily Instant Cashout'],
+    urgent: true,
   },
   {
     id: 2,
-    company: 'Harbor Logistics',
-    title: 'Forklift Operator',
-    pay: 35,
-    location: 'Port District, Dock 12',
-    distance: 5.1,
-    date: 'Tomorrow',
-    time: '7:00 AM – 3:00 PM',
-    hours: 8,
+    company: 'Navi Mumbai Metro Pier #12',
+    title: 'Steel Binding Helper',
+    pay: 880,
+    unit: '/ Day (8h)',
+    location: 'Sanpada Rail Yard',
+    distance: 2.4,
+    time: '08:00 AM – 04:30 PM',
+    sector: 'CONSTRUCTION',
     status: 'OPEN',
-    slots: '5 of 5 left',
+    slots: 'Instant Approval • 4 spots',
+    rating: 4.8,
+    reviews: 98,
+    overtime: '+₹110/h Overtime',
+    perks: ['Free Lunch & PPE', 'Aadhaar Bio-Check', 'Tea Breaks'],
+    urgent: false,
   },
   {
     id: 3,
-    company: 'SkyBridge Electrical',
-    title: 'Safety Inspector',
-    pay: 42,
-    location: 'Northside Tower Project',
-    distance: 3.7,
-    date: 'Dec 19',
-    time: '8:00 AM – 4:00 PM',
-    hours: 8,
-    status: 'OPEN',
-    slots: '3 of 3 left',
+    company: 'SRM Logistics Hub Turbhe',
+    title: 'Package Sorter & Loader',
+    pay: 820,
+    unit: '/ Shift (8h)',
+    location: 'Turbhe MIDC Warehouse Zone',
+    distance: 4.1,
+    time: '09:00 PM – 05:00 AM (Night)',
+    sector: 'WAREHOUSE',
+    status: 'FILLING FAST',
+    slots: '2 Spots Left',
+    rating: 4.6,
+    reviews: 76,
+    overtime: '+₹100/h Overtime',
+    perks: ['AC Environment', 'Daily Cashout', 'Night Differential'],
+    urgent: false,
   },
   {
     id: 4,
-    company: 'RiverWalk Demolition',
-    title: 'Heavy Equipment Operator',
-    pay: 38,
-    location: 'Southbank Redevelopment',
-    distance: 1.8,
-    date: 'Tomorrow',
-    time: '5:30 AM – 1:30 PM',
-    hours: 8,
-    status: 'FILLING FAST',
-    slots: '1 of 6 left',
+    company: 'Phoenix Mall Facility Expansion',
+    title: 'Deep Cleaning & Floor Maintenance',
+    pay: 750,
+    unit: '/ Day (8h)',
+    location: 'Seawoods Grand Central',
+    distance: 5.8,
+    time: 'Tomorrow, 09:00 AM – 05:00 PM',
+    sector: 'FACILITIES',
+    status: 'OPEN',
+    slots: '5 Spots Left',
+    rating: 4.9,
+    reviews: 110,
+    overtime: '+₹95/h Overtime',
+    perks: ['Clean Uniform Provided', 'Prompt UPI Settlement'],
+    urgent: false,
   },
   {
     id: 5,
-    company: 'Titan Steel Fabricators',
-    title: 'Welder – MIG/TIG',
-    pay: 45,
-    location: 'East Industrial Park',
-    distance: 8.2,
-    date: 'Dec 20',
-    time: '6:00 AM – 6:00 PM',
-    hours: 12,
+    company: 'SkyBridge Electrical Works',
+    title: 'Electrician Helper & Conduit Laying',
+    pay: 900,
+    unit: '/ Day (8h)',
+    location: 'CBD Belapur Sector 15',
+    distance: 3.2,
+    time: 'Tomorrow, 08:30 AM – 05:00 PM',
+    sector: 'CONSTRUCTION',
     status: 'OPEN',
-    slots: '4 of 4 left',
-  },
-  {
-    id: 6,
-    company: 'CleanSweep Services',
-    title: 'Site Cleanup Crew',
-    pay: 22,
-    location: 'Midtown Mall Renovation',
-    distance: 0.9,
-    date: 'Today',
-    time: '3:00 PM – 11:00 PM',
-    hours: 8,
-    status: 'URGENT',
-    slots: '3 of 10 left',
-  },
-  {
-    id: 7,
-    company: 'Pacific Scaffolding',
-    title: 'Scaffold Erector',
-    pay: 33,
-    location: 'Harbor Heights, Block C',
-    distance: 4.5,
-    date: 'Dec 21',
-    time: '7:00 AM – 3:30 PM',
-    hours: 8.5,
-    status: 'OPEN',
-    slots: '6 of 6 left',
-  },
-  {
-    id: 8,
-    company: 'Apex Concrete Solutions',
-    title: 'Concrete Finisher',
-    pay: 31,
-    location: 'University District',
-    distance: 6.3,
-    date: 'Tomorrow',
-    time: '5:00 AM – 1:00 PM',
-    hours: 8,
-    status: 'FILLING FAST',
-    slots: '2 of 4 left',
-  },
+    slots: '3 Spots Left',
+    rating: 4.7,
+    reviews: 52,
+    overtime: '+₹115/h Overtime',
+    perks: ['Safety Harness Supplied', 'Escrow Locked'],
+    urgent: false,
+  }
 ];
 
-const FILTERS = ['All', 'Nearby', 'High Pay', 'Urgent'];
-const SORT_OPTIONS = ['Highest Pay', 'Nearest', 'Soonest'];
-
-const statusStyles = {
-  'URGENT': { bg: 'bg-[#F43F5E]/15', text: 'text-[#F43F5E]', border: 'border-l-[#F43F5E]' },
-  'OPEN': { bg: 'bg-[#10B981]/15', text: 'text-[#10B981]', border: 'border-l-[#10B981]' },
-  'FILLING FAST': { bg: 'bg-[#FACC15]/15', text: 'text-[#FACC15]', border: 'border-l-[#FACC15]' },
-};
-
 export default function AvailableJobs() {
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('Highest Pay');
-  const [showSortMenu, setShowSortMenu] = useState(false);
-  const [appliedJobs, setAppliedJobs] = useState(new Set());
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeFilter, setActiveFilter] = useState('ALL');
+  const [appliedJobs, setAppliedJobs] = useState({});
+  const [savedJobs, setSavedJobs] = useState({});
+  const [toastMessage, setToastMessage] = useState(null);
 
-  const handleApply = (jobId) => {
-    setAppliedJobs(prev => new Set([...prev, jobId]));
+  const showToast = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const handleApply = (jobId, companyName) => {
+    setAppliedJobs(prev => ({ ...prev, [jobId]: true }));
+    showToast(`Slot Locked for ${companyName}! Escrow wage reserved on-chain.`);
+  };
+
+  const toggleSave = (jobId) => {
+    setSavedJobs(prev => {
+      const next = { ...prev, [jobId]: !prev[jobId] };
+      showToast(next[jobId] ? 'Shift saved to bookmarks.' : 'Shift removed from bookmarks.');
+      return next;
+    });
   };
 
   const filteredJobs = useMemo(() => {
-    let jobs = [...MOCK_JOBS];
+    return MOCK_JOBS.filter(job => {
+      const matchesSearch =
+        job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.location.toLowerCase().includes(searchTerm.toLowerCase());
 
-    // Search filter
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      jobs = jobs.filter(j =>
-        j.company.toLowerCase().includes(q) ||
-        j.title.toLowerCase().includes(q) ||
-        j.location.toLowerCase().includes(q)
-      );
-    }
+      if (!matchesSearch) return false;
 
-    // Category filter
-    if (activeFilter === 'Nearby') {
-      jobs = jobs.filter(j => j.distance <= 3);
-    } else if (activeFilter === 'High Pay') {
-      jobs = jobs.filter(j => j.pay >= 35);
-    } else if (activeFilter === 'Urgent') {
-      jobs = jobs.filter(j => j.status === 'URGENT');
-    }
+      if (activeFilter === '<5KM') return job.distance <= 5.0;
+      if (activeFilter === 'TODAY') return job.time.includes('AM') || job.urgent;
+      if (activeFilter === 'CONSTRUCTION') return job.sector === 'CONSTRUCTION';
+      if (activeFilter === 'WAREHOUSE') return job.sector === 'WAREHOUSE';
+      if (activeFilter === 'DAILY ₹800+') return job.pay >= 800;
 
-    // Sort
-    if (sortBy === 'Highest Pay') {
-      jobs.sort((a, b) => b.pay - a.pay);
-    } else if (sortBy === 'Nearest') {
-      jobs.sort((a, b) => a.distance - b.distance);
-    } else if (sortBy === 'Soonest') {
-      const dateOrder = { 'Today': 0, 'Tomorrow': 1 };
-      jobs.sort((a, b) => (dateOrder[a.date] ?? 2) - (dateOrder[b.date] ?? 2));
-    }
-
-    return jobs;
-  }, [activeFilter, searchQuery, sortBy]);
+      return true;
+    });
+  }, [searchTerm, activeFilter]);
 
   return (
-    <div className="px-4 py-5">
-      {/* Header */}
-      <div className="mb-4">
-        <h2 className="text-xl font-bold text-[#FAFAFA] tracking-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
-          Available Shifts
-        </h2>
-        <p className="text-xs text-[#A1A1AA] mt-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-          {filteredJobs.length} shift{filteredJobs.length !== 1 ? 's' : ''} found
-        </p>
+    <div className="flex flex-col gap-4 p-4 text-[#FAFAFA]">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[#27272A] border border-[#FACC15] text-[#FAFAFA] px-4 py-2 rounded-lg shadow-xl flex items-center gap-2 text-xs font-mono animate-in fade-in">
+          <Check className="w-4 h-4 text-[#FACC15]" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
+
+      {/* Live Pulse Bar */}
+      <div className="flex items-center justify-between bg-[#18181B] border border-[#27272A] px-3.5 py-2.5 rounded-lg shadow-sm">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-ping" />
+          <span className="text-xs font-mono font-bold text-[#34D399] uppercase tracking-wide">
+            38 Shifts Live Nearby (&lt;5km)
+          </span>
+        </div>
+        <div className="flex items-center gap-1 text-[11px] font-mono text-[#FACC15]">
+          <ShieldCheck className="w-3.5 h-3.5" />
+          <span>Escrow Locked</span>
+        </div>
       </div>
 
-      {/* Search Bar */}
-      <div className="relative mb-3">
+      {/* Search Input */}
+      <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A1A1AA]" />
         <input
           type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search jobs, companies, locations..."
-          className="w-full bg-[#18181B] border border-[#27272A] rounded-[3px] pl-9 pr-4 py-2.5 text-sm text-[#FAFAFA] placeholder-[#A1A1AA]/50 outline-none focus:border-[#FACC15]/50 transition-colors"
-          style={{ fontFamily: 'JetBrains Mono, monospace' }}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Role, sector, or contractor (e.g. Welder, Pier #12)..."
+          className="w-full bg-[#18181B] border border-[#27272A] text-[#FAFAFA] placeholder:text-[#A1A1AA]/60 text-xs font-mono pl-9 pr-3 py-2.5 rounded-lg focus:outline-none focus:border-[#FACC15] transition-colors"
         />
       </div>
 
-      {/* Filters + Sort Row */}
-      <div className="flex items-center justify-between gap-2 mb-4">
-        {/* Filter Chips */}
-        <div className="flex gap-1.5 overflow-x-auto no-scrollbar">
-          {FILTERS.map(filter => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`shrink-0 px-3 py-1.5 rounded-[3px] text-xs font-medium transition-all ${
-                activeFilter === filter
-                  ? 'bg-[#FACC15] text-[#09090B]'
-                  : 'bg-[#27272A] text-[#A1A1AA] hover:text-[#FAFAFA]'
-              }`}
-              style={{ fontFamily: 'JetBrains Mono, monospace' }}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        {/* Sort Dropdown */}
-        <div className="relative shrink-0">
+      {/* Filter Chips Horizontal Scroll */}
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none -mx-4 px-4">
+        {[
+          { id: 'ALL', label: 'All (38)' },
+          { id: '<5KM', label: '< 5KM' },
+          { id: 'TODAY', label: 'TODAY' },
+          { id: 'CONSTRUCTION', label: 'CONSTRUCTION' },
+          { id: 'WAREHOUSE', label: 'WAREHOUSE' },
+          { id: 'DAILY ₹800+', label: 'DAILY ₹800+' }
+        ].map(chip => (
           <button
-            onClick={() => setShowSortMenu(!showSortMenu)}
-            className="flex items-center gap-1 bg-[#27272A] px-2.5 py-1.5 rounded-[3px] text-[10px] text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors"
-            style={{ fontFamily: 'JetBrains Mono, monospace' }}
+            key={chip.id}
+            onClick={() => setActiveFilter(chip.id)}
+            className={`whitespace-nowrap px-3 py-1.5 rounded text-xs font-mono font-bold uppercase transition-all ${
+              activeFilter === chip.id
+                ? 'bg-[#FACC15] text-[#09090B] shadow-sm'
+                : 'bg-[#18181B] text-[#A1A1AA] hover:text-[#FAFAFA] border border-[#27272A]'
+            }`}
           >
-            <ArrowUpDown className="w-3 h-3" />
-            <span className="hidden sm:inline">Sort:</span> {sortBy}
-            <ChevronDown className={`w-3 h-3 transition-transform ${showSortMenu ? 'rotate-180' : ''}`} />
+            {chip.label}
           </button>
-
-          {showSortMenu && (
-            <>
-              <div className="fixed inset-0 z-40" onClick={() => setShowSortMenu(false)} />
-              <div className="absolute right-0 top-full mt-1 z-50 bg-[#18181B] border border-[#27272A] rounded-[3px] py-1 min-w-[140px]"
-                style={{ boxShadow: '4px 4px 0 0 #000' }}>
-                {SORT_OPTIONS.map(opt => (
-                  <button
-                    key={opt}
-                    onClick={() => { setSortBy(opt); setShowSortMenu(false); }}
-                    className={`w-full text-left px-3 py-2 text-xs transition-colors ${
-                      sortBy === opt ? 'text-[#FACC15] bg-[#FACC15]/5' : 'text-[#A1A1AA] hover:text-[#FAFAFA] hover:bg-[#27272A]'
-                    }`}
-                    style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                  >
-                    {opt}
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
+        ))}
       </div>
 
-      {/* Job Cards */}
-      <div className="flex flex-col gap-3">
-        {filteredJobs.map(job => {
-          const style = statusStyles[job.status];
-          const applied = appliedJobs.has(job.id);
+      {/* Jobs Feed List */}
+      <div className="flex flex-col gap-3 pb-8">
+        {filteredJobs.map(job => (
+          <div
+            key={job.id}
+            className={`bg-[#18181B] border border-[#27272A] rounded-xl p-4 shadow-hard flex flex-col gap-3 relative overflow-hidden ${
+              job.urgent ? 'border-l-4 border-l-[#FACC15]' : ''
+            }`}
+          >
+            {/* Urgent Top Bar */}
+            {job.urgent && (
+              <div className="flex items-center justify-between pb-1">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#F43F5E]/20 text-[#FB7185] border border-[#F43F5E]/40 font-mono text-[10px] font-bold uppercase">
+                  <Flame className="w-3 h-3" />
+                  URGENT CALLOUT
+                </span>
+                <span className="text-[10px] font-mono text-[#FACC15] font-bold bg-[#27272A] px-2 py-0.5 rounded">
+                  STARTS IN 2H
+                </span>
+              </div>
+            )}
 
-          return (
-            <div
-              key={job.id}
-              className={`bg-[#18181B] border border-[#27272A] border-l-4 ${style.border} rounded-[4px] p-4 transition-all hover:bg-[#1a1a1f]`}
-            >
-              {/* Top row: Company + Status */}
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <div className="min-w-0">
-                  <p className="text-[10px] text-[#A1A1AA] uppercase tracking-wider truncate" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    {job.company}
-                  </p>
-                  <h3 className="text-sm font-bold text-[#FAFAFA] mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    {job.title}
-                  </h3>
+            {/* Header: Company & Wage */}
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex flex-col min-w-0">
+                <span className="text-sm font-bold text-[#FAFAFA] truncate" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {job.company}
+                </span>
+                <span className="text-xs text-[#A1A1AA] font-mono truncate">
+                  {job.title}
+                </span>
+              </div>
+
+              <div className="flex flex-col items-end shrink-0">
+                <div className="flex items-baseline gap-0.5 text-base font-extrabold text-[#FACC15] font-mono">
+                  <span>₹{job.pay}</span>
                 </div>
-                <span className={`shrink-0 ${style.bg} ${style.text} text-[10px] font-bold px-2 py-0.5 rounded-[2px] flex items-center gap-1`}
-                  style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                  {job.status === 'URGENT' && <Flame className="w-3 h-3" />}
-                  {job.status === 'FILLING FAST' && <Zap className="w-3 h-3" />}
-                  {job.status}
+                <span className="text-[9px] font-mono text-[#A1A1AA]">
+                  {job.unit}
                 </span>
               </div>
+            </div>
 
-              {/* Pay */}
-              <div className="mb-3">
-                <span className="text-2xl font-bold text-[#FACC15]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                  ${job.pay}
-                </span>
-                <span className="text-xs text-[#A1A1AA] ml-0.5" style={{ fontFamily: 'JetBrains Mono, monospace' }}>/HR</span>
+            {/* Telemetry Strip: Distance, Time, Rating */}
+            <div className="grid grid-cols-3 gap-1 bg-[#27272A] p-2 rounded-lg text-center font-mono text-[10px] border border-[#3F3F46]/60">
+              <div className="flex flex-col items-center">
+                <span className="text-[#A1A1AA] uppercase">Distance</span>
+                <span className="font-bold text-[#FAFAFA] mt-0.5">{job.distance} km</span>
               </div>
-
-              {/* Details row */}
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-3 text-xs text-[#A1A1AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                <span className="flex items-center gap-1">
-                  <MapPin className="w-3 h-3" />
-                  {job.location}
-                </span>
-                <span className="bg-[#27272A] text-[#FAFAFA] px-1.5 py-0.5 rounded-[2px] text-[10px] font-semibold">
-                  {job.distance} MI
-                </span>
+              <div className="flex flex-col items-center border-x border-[#3F3F46]">
+                <span className="text-[#A1A1AA] uppercase">Shift Time</span>
+                <span className="font-bold text-[#FAFAFA] mt-0.5 truncate max-w-full px-1">{job.time.split('–')[0]}</span>
               </div>
-
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-4 text-xs text-[#A1A1AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  {job.date}, {job.time}
-                </span>
-                <span className="bg-[#27272A] text-[#FAFAFA] px-1.5 py-0.5 rounded-[2px] text-[10px] font-semibold">
-                  {job.hours}H SHIFT
-                </span>
-                <span className="text-[10px] text-[#A1A1AA]/70">
-                  {job.slots}
-                </span>
+              <div className="flex flex-col items-center">
+                <span className="text-[#A1A1AA] uppercase">Rating</span>
+                <span className="font-bold text-[#FACC15] mt-0.5">★ {job.rating}</span>
               </div>
+            </div>
 
-              {/* Apply Button */}
-              {applied ? (
+            {/* Perks & Overtime */}
+            <div className="flex flex-wrap gap-1">
+              {job.perks.map((p, i) => (
+                <span key={i} className="px-2 py-0.5 rounded bg-[#27272A] text-[#FAFAFA] text-[9px] font-mono">
+                  {p}
+                </span>
+              ))}
+              <span className="px-2 py-0.5 rounded bg-[#10B981]/15 text-[#34D399] text-[9px] font-mono font-bold">
+                {job.overtime}
+              </span>
+            </div>
+
+            {/* Actions: Apply & Save */}
+            <div className="flex items-center gap-2 pt-1 border-t border-[#27272A]">
+              <button
+                onClick={() => toggleSave(job.id)}
+                className={`w-10 h-10 rounded-lg border flex items-center justify-center transition-colors ${
+                  savedJobs[job.id]
+                    ? 'bg-[#FACC15] text-[#09090B] border-[#FACC15]'
+                    : 'bg-[#27272A] text-[#A1A1AA] border-[#3F3F46] hover:text-[#FAFAFA]'
+                }`}
+                title="Bookmark shift"
+              >
+                <Bookmark className="w-4 h-4" />
+              </button>
+
+              {appliedJobs[job.id] ? (
                 <button
                   disabled
-                  className="w-full flex items-center justify-center gap-2 bg-[#10B981]/15 text-[#10B981] font-bold text-xs py-2.5 rounded-[3px] cursor-default"
-                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                  className="flex-1 h-10 bg-[#10B981] text-[#09090B] font-mono text-xs font-bold uppercase rounded-lg flex items-center justify-center gap-1.5 cursor-default"
                 >
-                  <Check className="w-4 h-4" />
-                  APPLICATION SENT ✓
+                  <Check className="w-4 h-4 stroke-[3]" />
+                  <span>Applied • Slot Locked ✓</span>
                 </button>
               ) : (
                 <button
-                  onClick={() => handleApply(job.id)}
-                  className="w-full bg-[#FACC15] hover:bg-[#EAB308] text-[#09090B] font-bold text-xs py-2.5 rounded-[3px] transition-colors cursor-pointer active:translate-y-px"
-                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                  onClick={() => handleApply(job.id, job.company)}
+                  className="flex-1 h-10 bg-[#FACC15] hover:bg-[#EAB308] text-[#09090B] font-mono text-xs font-bold uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 shadow-sm btn-press transition-all cursor-pointer"
                 >
-                  APPLY NOW
+                  <Zap className="w-4 h-4 fill-current" />
+                  <span>One-Tap Fast Apply</span>
                 </button>
               )}
             </div>
-          );
-        })}
-
-        {filteredJobs.length === 0 && (
-          <div className="text-center py-12">
-            <Search className="w-8 h-8 text-[#27272A] mx-auto mb-3" />
-            <p className="text-sm text-[#A1A1AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-              No shifts match your search
-            </p>
-            <button
-              onClick={() => { setSearchQuery(''); setActiveFilter('All'); }}
-              className="mt-2 text-xs text-[#FACC15] hover:underline"
-              style={{ fontFamily: 'JetBrains Mono, monospace' }}
-            >
-              Clear filters
-            </button>
           </div>
-        )}
+        ))}
       </div>
-
-      {/* Bottom spacer */}
-      <div className="h-4" />
     </div>
   );
 }

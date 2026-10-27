@@ -1,385 +1,205 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  Clock, DollarSign, TrendingUp, AlertCircle, ChevronDown, ChevronUp,
-  Timer, Building2, HardHat, CheckCircle2, ShieldCheck, ArrowUpRight,
-  ArrowDownRight, Banknote, CircleDot, CalendarDays, BarChart3,
-  ChevronRight, Wallet, Hourglass
+  Clock, TrendingUp, AlertTriangle, Timer, Building2, HardHat,
+  CheckCircle2, ShieldCheck, ArrowUpRight, Banknote, CircleDot,
+  CalendarDays, BarChart3, ChevronRight, Wallet, Hourglass,
+  Volume2, Phone, PlayCircle, ReceiptText
 } from 'lucide-react';
 
-const summaryCards = [
-  {
-    label: 'THIS WEEK',
-    amount: '$1,247.50',
-    sub: '32.5 HRS',
-    trend: '+12% vs last week',
-    trendDir: 'up',
-    icon: Wallet,
-    accent: '#10B981',
-  },
-  {
-    label: 'PENDING PAY',
-    amount: '$485.00',
-    sub: '2 SHIFTS',
-    badge: 'PROCESSING',
-    icon: Hourglass,
-    accent: '#FACC15',
-  },
-  {
-    label: 'OVERTIME',
-    amount: '4.5 HRS',
-    sub: '$168.75 OT PAY',
-    trend: '+1.5 vs avg',
-    trendDir: 'up',
-    icon: TrendingUp,
-    accent: '#06B6D4',
-  },
-];
-
-const shiftHistory = {
-  'This Week': [
-    { id: 1, date: 'Mon, Oct 21', company: 'Metro Construction Co.', hours: 8.0, otHours: 0, basePay: 224.00, otPay: 0, total: 224.00, status: 'PAID', role: 'General Laborer', rate: 28.00 },
-    { id: 2, date: 'Tue, Oct 22', company: 'Apex Roofing LLC', hours: 8.0, otHours: 2.0, basePay: 224.00, otPay: 84.00, total: 308.00, status: 'PAID', role: 'Roofing Installer', rate: 28.00 },
-    { id: 3, date: 'Wed, Oct 23', company: 'Metro Construction Co.', hours: 8.0, otHours: 1.5, basePay: 224.00, otPay: 63.00, total: 287.00, status: 'PENDING', role: 'General Laborer', rate: 28.00 },
-    { id: 4, date: 'Thu, Oct 24', company: 'Summit Builders Inc.', hours: 8.0, otHours: 1.0, basePay: 240.00, otPay: 45.00, total: 285.00, status: 'PENDING', role: 'Steel Framer', rate: 30.00 },
-  ],
-  'Last Week': [
-    { id: 5, date: 'Mon, Oct 14', company: 'Metro Construction Co.', hours: 8.0, otHours: 0, basePay: 224.00, otPay: 0, total: 224.00, status: 'PAID', role: 'General Laborer', rate: 28.00 },
-    { id: 6, date: 'Tue, Oct 15', company: 'Metro Construction Co.', hours: 8.0, otHours: 0, basePay: 224.00, otPay: 0, total: 224.00, status: 'PAID', role: 'General Laborer', rate: 28.00 },
-    { id: 7, date: 'Wed, Oct 16', company: 'BrightPath Solar', hours: 6.5, otHours: 0, basePay: 195.00, otPay: 0, total: 195.00, status: 'PAID', role: 'Panel Installer', rate: 30.00 },
-    { id: 8, date: 'Thu, Oct 17', company: 'Apex Roofing LLC', hours: 8.0, otHours: 0, basePay: 224.00, otPay: 0, total: 224.00, status: 'DISPUTED', role: 'Roofing Installer', rate: 28.00 },
-    { id: 9, date: 'Fri, Oct 18', company: 'Metro Construction Co.', hours: 8.0, otHours: 0.5, basePay: 224.00, otPay: 21.00, total: 245.00, status: 'PAID', role: 'General Laborer', rate: 28.00 },
-  ],
-  'All': [
-    { id: 10, date: 'Fri, Oct 11', company: 'Summit Builders Inc.', hours: 8.0, otHours: 0, basePay: 240.00, otPay: 0, total: 240.00, status: 'PAID', role: 'Steel Framer', rate: 30.00 },
-    { id: 11, date: 'Mon, Oct 7', company: 'Metro Construction Co.', hours: 8.0, otHours: 1.0, basePay: 224.00, otPay: 42.00, total: 266.00, status: 'PAID', role: 'General Laborer', rate: 28.00 },
-    { id: 12, date: 'Wed, Oct 2', company: 'BrightPath Solar', hours: 7.5, otHours: 0, basePay: 225.00, otPay: 0, total: 225.00, status: 'PAID', role: 'Panel Installer', rate: 30.00 },
-  ],
-};
-
-const statusStyles = {
-  PAID: 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30',
-  PENDING: 'bg-amber-500/15 text-amber-400 border border-amber-500/30',
-  DISPUTED: 'bg-rose-500/15 text-rose-400 border border-rose-500/30',
-  PROCESSING: 'bg-amber-500/15 text-amber-400 border border-amber-500/30',
-};
-
 export default function ShiftWageTracker() {
-  const [activeTab, setActiveTab] = useState('This Week');
-  const [expandedRow, setExpandedRow] = useState(null);
-  const [elapsed, setElapsed] = useState({ h: 4, m: 23 });
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [clockedOut, setClockedOut] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
 
-  // Simulate ticking clock for active shift
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setElapsed(prev => {
-        const newM = prev.m + 1;
-        if (newM >= 60) return { h: prev.h + 1, m: 0 };
-        return { ...prev, m: newM };
-      });
-    }, 60000);
-    return () => clearInterval(interval);
-  }, []);
+  const showToast = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
 
-  const currentEarned = (elapsed.h + elapsed.m / 60) * 28;
-  const tabs = ['This Week', 'Last Week', 'All'];
+  const handleAudioSummary = () => {
+    setIsPlayingAudio(true);
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const summaryText = "Your shift summary for Site 4B: Eight hours regular pay 640 rupees, one point five hours overtime 180 rupees, safety standard attendance bonus 100 rupees. Total take home 920 rupees, securely credited to your escrow wallet.";
+      const utterance = new SpeechSynthesisUtterance(summaryText);
+      utterance.onend = () => setIsPlayingAudio(false);
+      utterance.onerror = () => setIsPlayingAudio(false);
+      window.speechSynthesis.speak(utterance);
+    } else {
+      setTimeout(() => setIsPlayingAudio(false), 2500);
+    }
+  };
+
+  const handleClockOut = () => {
+    setClockedOut(true);
+    showToast('Shift closed at 04:30 PM! ₹920.00 instantly disbursed to your UPI/bank account.');
+  };
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-[#FAFAFA] pb-24">
-      {/* Page Header */}
-      <div className="px-4 pt-6 pb-4">
-        <div className="flex items-center gap-2 mb-1">
-          <BarChart3 size={20} className="text-[#FACC15]" />
-          <h1 className="text-xl font-bold tracking-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Shift & Wage Tracker
-          </h1>
+    <div className="flex flex-col gap-4 p-4 text-[#FAFAFA]">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[#27272A] border border-[#FACC15] text-[#FAFAFA] px-4 py-2 rounded-lg shadow-xl flex items-center gap-2 text-xs font-mono animate-in fade-in">
+          <CheckCircle2 className="w-4 h-4 text-[#FACC15]" />
+          <span>{toastMessage}</span>
         </div>
-        <p className="text-sm text-[#A1A1AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-          Week of Oct 21 – Oct 27, 2024
-        </p>
+      )}
+
+      {/* Header Badge */}
+      <div className="flex items-center justify-between bg-[#18181B] border border-[#27272A] p-2.5 rounded-lg">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse" />
+          <span className="text-xs font-mono font-bold text-[#FAFAFA] uppercase">
+            Site 4B Active • Navi Mumbai
+          </span>
+        </div>
+        <span className="px-2 py-0.5 rounded bg-[#27272A] text-[#10B981] text-[10px] font-mono font-bold">
+          BOCW ACT 1996
+        </span>
       </div>
 
-      {/* Summary Cards – horizontal scroll */}
-      <div className="flex gap-3 px-4 pb-4 overflow-x-auto scrollbar-none">
-        {summaryCards.map((card) => {
-          const Icon = card.icon;
-          return (
-            <div
-              key={card.label}
-              className="min-w-[200px] flex-shrink-0 bg-[#18181B] border border-[#27272A] rounded-[4px] p-4"
-              style={{ boxShadow: '4px 4px 0 0 #000' }}
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-semibold tracking-widest text-[#A1A1AA]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  {card.label}
-                </span>
-                <Icon size={16} style={{ color: card.accent }} />
-              </div>
-              <p className="text-2xl font-bold tracking-tight" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                {card.amount}
-              </p>
-              <p className="text-xs text-[#A1A1AA] mt-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                {card.sub}
-              </p>
-              {card.badge && (
-                <span className={`inline-block mt-2 text-[10px] font-semibold px-2 py-0.5 rounded-[2px] ${statusStyles[card.badge]}`}
-                  style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                  {card.badge}
-                </span>
-              )}
-              {card.trend && (
-                <div className="flex items-center gap-1 mt-2">
-                  {card.trendDir === 'up' ? (
-                    <ArrowUpRight size={12} className="text-emerald-400" />
-                  ) : (
-                    <ArrowDownRight size={12} className="text-rose-400" />
-                  )}
-                  <span className="text-[11px] text-emerald-400" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    {card.trend}
-                  </span>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      {/* Cash App ₹920 Hero Card */}
+      <section className="bg-[#18181B] border border-[#27272A] rounded-xl p-5 flex flex-col items-center text-center shadow-hard relative overflow-hidden">
+        <div className="flex items-center gap-1.5 mb-1">
+          <span className="w-2 h-2 rounded-full bg-[#FACC15]" />
+          <span className="text-[10px] font-mono uppercase tracking-wider text-[#A1A1AA] font-bold">
+            Today's Accrued Earnings
+          </span>
+        </div>
 
-      {/* Active Shift Card */}
-      <div className="px-4 pb-4">
-        <div
-          className="bg-[#18181B] border border-cyan-500/30 rounded-[4px] p-4 relative overflow-hidden"
-          style={{ boxShadow: '4px 4px 0 0 #000' }}
-        >
-          {/* Subtle glow top border */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-500" />
+        <div className="flex items-baseline justify-center gap-1 my-2">
+          <span className="text-3xl font-extrabold text-[#FACC15] font-mono">₹</span>
+          <span className="text-5xl font-black text-[#FAFAFA] font-mono tracking-tight">920</span>
+          <span className="text-xs font-mono text-[#A1A1AA]">.00</span>
+        </div>
 
-          <div className="flex items-center gap-2 mb-4">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400" />
-            </span>
-            <span className="text-[10px] font-bold tracking-widest text-cyan-400" style={{ fontFamily: 'Inter, sans-serif' }}>
-              CURRENTLY CLOCKED IN
-            </span>
-          </div>
+        <div className="inline-flex items-center gap-1.5 bg-[#27272A] border border-[#3F3F46] px-3 py-1 rounded-full text-xs font-mono text-[#FAFAFA]">
+          <Clock className="w-3.5 h-3.5 text-[#FACC15]" />
+          <span>8 hrs regular + 1.5 hrs overtime</span>
+        </div>
+      </section>
 
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Building2 size={14} className="text-[#A1A1AA]" />
-                <span className="text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Metro Construction Co.
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <HardHat size={14} className="text-[#A1A1AA]" />
-                <span className="text-xs text-[#A1A1AA]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  General Laborer
-                </span>
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="text-2xl font-bold text-[#FACC15]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                ${currentEarned.toFixed(2)}
-              </p>
-              <p className="text-[10px] text-[#A1A1AA] mt-0.5" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                EARNED SO FAR
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="bg-[#09090B] rounded-[2px] p-2.5 text-center">
-              <p className="text-[10px] text-[#A1A1AA] mb-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>CLOCK IN</p>
-              <p className="text-sm font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>06:00 AM</p>
-            </div>
-            <div className="bg-[#09090B] rounded-[2px] p-2.5 text-center">
-              <p className="text-[10px] text-[#A1A1AA] mb-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>ELAPSED</p>
-              <p className="text-sm font-bold text-cyan-400" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                {elapsed.h}h {String(elapsed.m).padStart(2, '0')}m
-              </p>
-            </div>
-            <div className="bg-[#09090B] rounded-[2px] p-2.5 text-center">
-              <p className="text-[10px] text-[#A1A1AA] mb-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>RATE</p>
-              <p className="text-sm font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>$28.00/HR</p>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between text-xs text-[#A1A1AA] mb-4 px-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-            <span>OT after 8hrs: <span className="text-[#FACC15] font-semibold">$42.00/HR</span></span>
-            <span>{elapsed.h >= 8 ? `${(elapsed.h + elapsed.m / 60 - 8).toFixed(1)} OT hrs` : `${(8 - elapsed.h - elapsed.m / 60).toFixed(1)} hrs to OT`}</span>
-          </div>
-
-          <button className="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 rounded-[3px] text-sm tracking-wide transition-colors"
-            style={{ fontFamily: 'Inter, sans-serif', boxShadow: '3px 3px 0 0 #000' }}>
-            CLOCK OUT
+      {/* Prominent Tactile Clock Out Action */}
+      <section className="flex flex-col gap-1.5">
+        {!clockedOut ? (
+          <button
+            onClick={handleClockOut}
+            className="w-full h-14 bg-[#FACC15] hover:bg-[#EAB308] text-[#09090B] font-mono font-bold text-sm tracking-wider uppercase rounded-xl flex items-center justify-center gap-2 shadow-hard btn-press transition-all cursor-pointer"
+          >
+            <Timer className="w-5 h-5 stroke-[2.5]" />
+            <span>Clock Out (Digital Sign-Off)</span>
           </button>
+        ) : (
+          <div className="w-full py-3 bg-[#10B981]/15 border border-[#10B981] rounded-xl text-center text-[#10B981] font-mono text-xs font-bold flex items-center justify-center gap-2">
+            <CheckCircle2 className="w-4 h-4" />
+            <span>Shift Signed Off • Payout Disbursed in 42s</span>
+          </div>
+        )}
+
+        <div className="flex items-center justify-center gap-1.5 text-center text-[10px] font-mono text-[#A1A1AA]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+          <span>Apex Infra Site 4B • On Duty Geofenced</span>
         </div>
-      </div>
+      </section>
 
-      {/* Shift History */}
-      <div className="px-4 pb-4">
-        <h2 className="text-sm font-bold tracking-wide mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
-          SHIFT HISTORY
-        </h2>
-
-        {/* Tabs */}
-        <div className="flex gap-1 bg-[#18181B] border border-[#27272A] rounded-[3px] p-1 mb-4">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => { setActiveTab(tab); setExpandedRow(null); }}
-              className={`flex-1 text-xs font-semibold py-2 rounded-[2px] transition-all ${
-                activeTab === tab
-                  ? 'bg-[#FACC15] text-[#09090B]'
-                  : 'text-[#A1A1AA] hover:text-[#FAFAFA]'
-              }`}
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Shift Rows */}
-        <div className="space-y-2">
-          {(shiftHistory[activeTab] || []).map((shift) => (
-            <div
-              key={shift.id}
-              className="bg-[#18181B] border border-[#27272A] rounded-[4px] overflow-hidden"
-              style={{ boxShadow: '3px 3px 0 0 #000' }}
-            >
-              {/* Row Summary */}
-              <button
-                onClick={() => setExpandedRow(expandedRow === shift.id ? null : shift.id)}
-                className="w-full p-3 flex items-center justify-between hover:bg-[#27272A]/50 transition-colors"
-              >
-                <div className="flex items-center gap-3 text-left">
-                  <div className="w-10 h-10 bg-[#27272A] rounded-[3px] flex items-center justify-center">
-                    <CalendarDays size={16} className="text-[#A1A1AA]" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      {shift.company}
-                    </p>
-                    <p className="text-[11px] text-[#A1A1AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                      {shift.date} · {shift.hours + shift.otHours}h
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="text-right">
-                    <p className="text-sm font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                      ${shift.total.toFixed(2)}
-                    </p>
-                    <span className={`inline-block text-[9px] font-bold px-1.5 py-0.5 rounded-[2px] ${statusStyles[shift.status]}`}
-                      style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                      {shift.status}
-                    </span>
-                  </div>
-                  {expandedRow === shift.id ? (
-                    <ChevronUp size={14} className="text-[#A1A1AA]" />
-                  ) : (
-                    <ChevronDown size={14} className="text-[#A1A1AA]" />
-                  )}
-                </div>
-              </button>
-
-              {/* Expanded Detail */}
-              {expandedRow === shift.id && (
-                <div className="border-t border-[#27272A] bg-[#09090B] p-3">
-                  <div className="grid grid-cols-2 gap-3 text-xs" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    <div>
-                      <span className="text-[#A1A1AA]">Role</span>
-                      <p className="font-semibold mt-0.5">{shift.role}</p>
-                    </div>
-                    <div>
-                      <span className="text-[#A1A1AA]">Rate</span>
-                      <p className="font-semibold mt-0.5">${shift.rate.toFixed(2)}/hr</p>
-                    </div>
-                    <div>
-                      <span className="text-[#A1A1AA]">Base Hours</span>
-                      <p className="font-semibold mt-0.5">{shift.hours}h → ${shift.basePay.toFixed(2)}</p>
-                    </div>
-                    <div>
-                      <span className="text-[#A1A1AA]">OT Hours</span>
-                      <p className="font-semibold mt-0.5">
-                        {shift.otHours > 0 ? (
-                          <span className="text-[#FACC15]">{shift.otHours}h → ${shift.otPay.toFixed(2)}</span>
-                        ) : (
-                          <span className="text-[#A1A1AA]">None</span>
-                        )}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#27272A]">
-                    <span className="text-xs text-[#A1A1AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>Total</span>
-                    <span className="text-sm font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                      ${shift.total.toFixed(2)}
-                    </span>
-                  </div>
-                  {shift.status === 'DISPUTED' && (
-                    <div className="mt-3 bg-rose-500/10 border border-rose-500/30 rounded-[2px] p-2 flex items-start gap-2">
-                      <AlertCircle size={14} className="text-rose-400 mt-0.5 flex-shrink-0" />
-                      <p className="text-[11px] text-rose-300" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                        Dispute filed: Reported hours mismatch. Under review by employer.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Wage Compliance */}
-      <div className="px-4 pb-6">
-        <div
-          className="bg-[#18181B] border border-[#27272A] rounded-[4px] p-4"
-          style={{ boxShadow: '4px 4px 0 0 #000' }}
-        >
-          <div className="flex items-center gap-2 mb-4">
-            <ShieldCheck size={16} className="text-emerald-400" />
-            <h2 className="text-xs font-bold tracking-widest" style={{ fontFamily: 'Inter, sans-serif' }}>
-              MINIMUM WAGE COMPLIANCE
+      {/* Wise-Style Step-Line Pay Ledger Breakdown */}
+      <section className="bg-[#18181B] border border-[#27272A] rounded-xl p-4 flex flex-col gap-3 shadow-hard">
+        <div className="flex items-center justify-between pb-2 border-b border-[#27272A]">
+          <div className="flex items-center gap-2">
+            <ReceiptText className="w-4 h-4 text-[#FACC15]" />
+            <h2 className="text-sm font-bold text-[#FAFAFA]" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Shift Summary (Wise Step Ledger)
             </h2>
           </div>
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 uppercase font-bold">
+            Verified
+          </span>
+        </div>
 
-          {/* Compliance meter */}
-          <div className="mb-4">
-            <div className="flex items-center justify-between text-xs mb-2" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-              <span className="text-[#A1A1AA]">Local Minimum</span>
-              <span className="text-[#FAFAFA] font-semibold">$15.50/hr</span>
+        <div className="flex flex-col gap-2.5">
+          {/* Step 1: Regular */}
+          <div className="flex items-center justify-between py-1 border-b border-[#27272A]/50">
+            <div className="flex flex-col">
+              <span className="text-xs font-bold text-[#FAFAFA]">Regular Pay</span>
+              <span className="text-[10px] font-mono text-[#A1A1AA]">8.0 hrs @ ₹80 / hr</span>
             </div>
-            <div className="w-full h-3 bg-[#27272A] rounded-[2px] overflow-hidden relative">
-              {/* Min wage marker */}
-              <div className="absolute left-[53%] top-0 bottom-0 w-[2px] bg-[#A1A1AA] z-10" />
-              <div
-                className="h-full rounded-[2px] bg-gradient-to-r from-emerald-600 to-emerald-400"
-                style={{ width: '100%' }}
-              />
-            </div>
-            <div className="flex items-center justify-between text-xs mt-2" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-              <span className="text-[#A1A1AA]">Your Average</span>
-              <span className="text-emerald-400 font-bold">$29.20/hr</span>
-            </div>
+            <span className="text-sm font-bold font-mono text-[#FAFAFA]">₹640.00</span>
           </div>
 
-          {/* Compliance ratio visual */}
-          <div className="bg-[#09090B] rounded-[2px] p-3 flex items-center justify-between">
+          {/* Step 2: Overtime */}
+          <div className="flex items-center justify-between py-1 border-b border-[#27272A]/50">
+            <div className="flex flex-col">
+              <span className="text-xs font-bold text-[#FAFAFA]">Statutory Overtime (1.5x)</span>
+              <span className="text-[10px] font-mono text-[#A1A1AA]">1.5 hrs @ ₹120 / hr</span>
+            </div>
+            <span className="text-sm font-bold font-mono text-[#FACC15]">₹180.00</span>
+          </div>
+
+          {/* Step 3: Site Bonus */}
+          <div className="flex items-center justify-between py-1 border-b border-[#27272A]/50">
+            <div className="flex flex-col">
+              <span className="text-xs font-bold text-[#FAFAFA]">Scaffold Safety Allowance</span>
+              <span className="text-[10px] font-mono text-[#A1A1AA]">Safety standard attendance</span>
+            </div>
+            <span className="text-sm font-bold font-mono text-[#10B981]">₹100.00</span>
+          </div>
+
+          {/* Total Take Home */}
+          <div className="bg-[#27272A] border border-[#3F3F46] p-3 rounded-lg flex items-center justify-between mt-1">
             <div className="flex items-center gap-2">
-              <CheckCircle2 size={16} className="text-emerald-400" />
-              <span className="text-xs font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
-                All Shifts Compliant
+              <Wallet className="w-4 h-4 text-[#FACC15]" />
+              <span className="text-xs font-bold uppercase tracking-wider text-[#FAFAFA] font-mono">
+                Total Take Home
               </span>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-[2px] bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
-              style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-              184 / 184 SHIFTS ✓
+            <span className="text-base font-extrabold text-[#FACC15] font-mono">
+              ₹920.00
             </span>
           </div>
         </div>
-      </div>
+
+        {/* Audio Spoken Summary TTS */}
+        <button
+          onClick={handleAudioSummary}
+          className="w-full py-2.5 px-3 bg-[#27272A] hover:bg-[#3F3F46] active:bg-[#18181B] rounded-lg text-[#FAFAFA] text-xs font-mono font-semibold flex items-center justify-between transition-colors border border-[#3F3F46]"
+        >
+          <div className="flex items-center gap-2">
+            <Volume2 className={`w-4 h-4 ${isPlayingAudio ? 'text-[#FACC15] animate-pulse' : 'text-[#A1A1AA]'}`} />
+            <span>{isPlayingAudio ? 'Playing Spoken Breakdown...' : '🔊 Listen to Summary (Audio TTS)'}</span>
+          </div>
+          <PlayCircle className="w-4 h-4 text-[#FACC15]" />
+        </button>
+      </section>
+
+      {/* Quick Assistance Actions */}
+      <section className="bg-[#18181B] border border-[#27272A] rounded-xl p-3.5 flex flex-col gap-2 shadow-hard">
+        <h3 className="text-xs font-mono uppercase font-bold text-[#A1A1AA]">
+          Quick Assistance & Safety
+        </h3>
+        <div className="grid grid-cols-1 gap-2">
+          <button
+            onClick={() => showToast('Opening Anonymous Hazard Ticket for Site 4B...')}
+            className="w-full px-3 py-2.5 bg-[#27272A] hover:bg-[#3F3F46] rounded-lg flex items-center justify-between transition-colors border border-[#3F3F46]"
+          >
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-[#F43F5E]" />
+              <span className="text-xs font-bold text-[#FAFAFA]">⚠️ 1-Tap Report Safety Issue</span>
+            </div>
+            <ChevronRight className="w-4 h-4 text-[#A1A1AA]" />
+          </button>
+
+          <a
+            href="tel:+919820199411"
+            className="w-full px-3 py-2.5 bg-[#27272A] hover:bg-[#3F3F46] rounded-lg flex items-center justify-between transition-colors border border-[#3F3F46]"
+          >
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4 text-[#10B981]" />
+              <span className="text-xs font-bold text-[#FAFAFA]">📞 Call Supervisor (Shankar Patil)</span>
+            </div>
+            <ChevronRight className="w-4 h-4 text-[#A1A1AA]" />
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

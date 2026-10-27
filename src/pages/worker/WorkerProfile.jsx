@@ -1,397 +1,353 @@
 import React, { useState } from 'react';
 import {
-  Star, ShieldCheck, BadgeCheck, Award, Wrench, Clock, DollarSign,
+  Star, ShieldCheck, BadgeCheck, Award, Wrench, Clock,
   BarChart3, ChevronRight, Bell, Calendar, Edit3, User, Building2,
-  MessageSquare, TrendingUp, CheckCircle2, FileCheck, HardHat,
-  Zap, Target, ThumbsUp
+  TrendingUp, CheckCircle2, FileCheck, HardHat, Target, ThumbsUp,
+  Lock, X, Check, Droplets
 } from 'lucide-react';
 
-const skillTags = [
-  'Concrete Work', 'Steel Framing', 'Welding', 'Equipment Operation',
-  'Safety Inspection', 'Blueprint Reading', 'Scaffolding'
-];
-
-const certifications = [
-  { name: 'OSHA-10 Construction Safety', issuer: 'OSHA', expires: 'Mar 2026', active: true },
-  { name: 'Certified Welder – AWS D1.1', issuer: 'AWS', expires: 'Nov 2025', active: true },
-  { name: 'Forklift Operator License', issuer: 'NCCCO', expires: 'Jul 2025', active: true },
-  { name: 'First Aid / CPR', issuer: 'Red Cross', expires: 'Jan 2025', active: true },
-];
-
-const ratingBreakdown = [
-  { label: 'Reliability', score: 4.9 },
-  { label: 'Quality', score: 4.7 },
-  { label: 'Safety', score: 4.8 },
-  { label: 'Communication', score: 4.6 },
-];
-
-const recentReviews = [
-  { company: 'Metro Construction Co.', text: '"Consistently early, excellent work ethic. Would rehire immediately."', rating: 5, date: 'Oct 18' },
-  { company: 'Apex Roofing LLC', text: '"Solid craftsman, follows safety protocols to the letter."', rating: 5, date: 'Oct 12' },
-  { company: 'Summit Builders Inc.', text: '"Great communicator, worked well with the crew."', rating: 4, date: 'Oct 5' },
-];
-
 const statsGrid = [
-  { label: 'Total Shifts', value: '184', icon: Calendar },
-  { label: 'Total Hours', value: '1,472', icon: Clock },
-  { label: 'Total Earned', value: '$42,160', icon: DollarSign },
-  { label: 'On-Time Rate', value: '98.4%', icon: Target },
-  { label: 'Completion Rate', value: '99.2%', icon: CheckCircle2 },
-  { label: 'Avg Rating', value: '4.8★', icon: Star },
+  { label: 'Completed', value: '38', sub: 'Shifts' },
+  { label: 'Accrued', value: '₹34.2K', sub: 'Earnings' },
+  { label: 'Impact', value: '14', sub: 'Reviews' },
 ];
-
-const settingsItems = [
-  { label: 'Shift Notifications', desc: 'New shifts & schedule changes', key: 'shiftNotif', default: true },
-  { label: 'Pay Alerts', desc: 'Payment confirmations & disputes', key: 'payAlerts', default: true },
-  { label: 'Availability Calendar', desc: 'Let employers see your schedule', key: 'availCal', default: false },
-  { label: 'Review Notifications', desc: 'When employers rate your work', key: 'reviewNotif', default: true },
-];
-
-function StarDisplay({ rating, size = 14 }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <Star
-          key={i}
-          size={size}
-          className={i <= Math.floor(rating) ? 'text-[#FACC15] fill-[#FACC15]' : i <= rating ? 'text-[#FACC15] fill-[#FACC15]/50' : 'text-[#27272A]'}
-        />
-      ))}
-    </div>
-  );
-}
-
-function RatingBar({ label, score }) {
-  return (
-    <div className="flex items-center gap-3">
-      <span className="text-[11px] text-[#A1A1AA] w-28 shrink-0" style={{ fontFamily: 'Inter, sans-serif' }}>{label}</span>
-      <div className="flex-1 h-2 bg-[#27272A] rounded-[2px] overflow-hidden">
-        <div
-          className="h-full bg-[#FACC15] rounded-[2px]"
-          style={{ width: `${(score / 5) * 100}%` }}
-        />
-      </div>
-      <span className="text-xs font-bold w-8 text-right" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-        {score.toFixed(1)}
-      </span>
-    </div>
-  );
-}
 
 export default function WorkerProfile() {
-  const [toggles, setToggles] = useState(
-    Object.fromEntries(settingsItems.map((s) => [s.key, s.default]))
-  );
+  const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
+  const [ppeAnswer, setPpeAnswer] = useState('yes');
+  const [waterAnswer, setWaterAnswer] = useState('yes');
+  const [auditSubmitted, setAuditSubmitted] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
 
-  const handleToggle = (key) => {
-    setToggles((prev) => ({ ...prev, [key]: !prev[key] }));
+  const showToast = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const handleAuditSubmit = (e) => {
+    e.preventDefault();
+    setAuditSubmitted(true);
+    setIsAuditModalOpen(false);
+    showToast('Feedback Logged & Sealed on Immutable Smart Escrow Ledger (+50 Reputation XP)!');
   };
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-[#FAFAFA] pb-24">
-      {/* Profile Header */}
-      <div className="relative">
-        {/* Top accent bar */}
-        <div className="h-24 bg-gradient-to-br from-[#27272A] to-[#18181B]" />
+    <div className="flex flex-col gap-4 p-4 text-[#FAFAFA]">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[#27272A] border border-[#FACC15] text-[#FAFAFA] px-4 py-2 rounded-lg shadow-xl flex items-center gap-2 text-xs font-mono animate-in fade-in">
+          <CheckCircle2 className="w-4 h-4 text-[#FACC15]" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
 
-        <div className="px-4 -mt-12">
-          <div className="flex items-end gap-4 mb-4">
-            {/* Avatar */}
-            <div
-              className="w-20 h-20 rounded-[4px] bg-[#FACC15] flex items-center justify-center flex-shrink-0 border-4 border-[#09090B]"
-              style={{ boxShadow: '4px 4px 0 0 #000' }}
-            >
-              <span className="text-2xl font-black text-[#09090B]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                MR
-              </span>
+      {/* Profile Hero Card: Ramesh Patel */}
+      <div className="bg-[#18181B] border border-[#27272A] rounded-xl p-4 shadow-hard flex flex-col gap-3 relative overflow-hidden">
+        <div className="flex items-start gap-3.5">
+          {/* Avatar with Verified pip */}
+          <div className="relative shrink-0">
+            <div className="w-16 h-16 rounded-xl bg-[#27272A] border border-[#3F3F46] flex items-center justify-center font-mono font-black text-xl text-[#FACC15] shadow-inner">
+              RP
             </div>
-            <div className="pb-1">
-              <h1 className="text-xl font-bold tracking-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Marcus Rivera
+            <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#10B981] flex items-center justify-center text-[#09090B] font-bold text-[10px]">
+              ✓
+            </div>
+          </div>
+
+          <div className="flex flex-col min-w-0 flex-1">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <h1 className="text-base font-bold text-[#FAFAFA] truncate" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Ramesh Patel
               </h1>
-              <p className="text-xs text-[#A1A1AA]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Verified Frontline Worker
-              </p>
-              <p className="text-[11px] text-[#A1A1AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                Since March 2024
-              </p>
-            </div>
-          </div>
-
-          {/* Verification badges */}
-          <div className="flex flex-wrap gap-2 mb-6">
-            {[
-              { label: 'ID VERIFIED', icon: BadgeCheck, color: 'emerald' },
-              { label: 'SAFETY CERTIFIED', icon: ShieldCheck, color: 'cyan' },
-              { label: 'OSHA-10', icon: Award, color: 'amber' },
-            ].map((badge) => {
-              const Icon = badge.icon;
-              const colorMap = {
-                emerald: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
-                cyan: 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30',
-                amber: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
-              };
-              return (
-                <span
-                  key={badge.label}
-                  className={`inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wide px-2.5 py-1 rounded-[2px] border ${colorMap[badge.color]}`}
-                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                >
-                  <Icon size={12} />
-                  {badge.label} ✓
-                </span>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Dual Rating Display */}
-      <div className="px-4 pb-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {/* Worker Rating Card */}
-          <div
-            className="bg-[#18181B] border border-[#27272A] rounded-[4px] p-4"
-            style={{ boxShadow: '4px 4px 0 0 #000' }}
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <Star size={14} className="text-[#FACC15] fill-[#FACC15]" />
-              <h2 className="text-xs font-bold tracking-widest" style={{ fontFamily: 'Inter, sans-serif' }}>
-                WORKER RATING
-              </h2>
-            </div>
-
-            <div className="flex items-center gap-4 mb-4">
-              <div className="text-center">
-                <p className="text-4xl font-black text-[#FACC15]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                  4.8
-                </p>
-                <StarDisplay rating={4.8} />
-                <p className="text-[10px] text-[#A1A1AA] mt-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                  127 REVIEWS
-                </p>
-              </div>
-              <div className="flex-1 space-y-2">
-                {ratingBreakdown.map((r) => (
-                  <RatingBar key={r.label} label={r.label} score={r.score} />
-                ))}
-              </div>
-            </div>
-
-            {/* Recent Reviews */}
-            <div className="space-y-2 border-t border-[#27272A] pt-3">
-              <p className="text-[10px] text-[#A1A1AA] font-semibold tracking-wider mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
-                RECENT REVIEWS
-              </p>
-              {recentReviews.map((review, i) => (
-                <div key={i} className="bg-[#09090B] rounded-[2px] p-2.5">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[11px] font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      {review.company}
-                    </span>
-                    <div className="flex items-center gap-1">
-                      <StarDisplay rating={review.rating} size={10} />
-                      <span className="text-[10px] text-[#A1A1AA] ml-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                        {review.date}
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-[11px] text-[#A1A1AA] italic" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    {review.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Employer Ratings by Worker */}
-          <div
-            className="bg-[#18181B] border border-[#27272A] rounded-[4px] p-4"
-            style={{ boxShadow: '4px 4px 0 0 #000' }}
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <Building2 size={14} className="text-cyan-400" />
-              <h2 className="text-xs font-bold tracking-widest" style={{ fontFamily: 'Inter, sans-serif' }}>
-                YOUR EMPLOYER RATINGS
-              </h2>
-            </div>
-
-            <div className="text-center py-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 mb-3">
-                <MessageSquare size={24} className="text-cyan-400" />
-              </div>
-              <p className="text-3xl font-black" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                23
-              </p>
-              <p className="text-[10px] text-[#A1A1AA] tracking-wider font-semibold mt-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                SITE REVIEWS SUBMITTED
-              </p>
-            </div>
-
-            <div className="bg-[#09090B] rounded-[2px] p-3 mb-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-[#A1A1AA]" style={{ fontFamily: 'Inter, sans-serif' }}>Average Rating Given</span>
-                <div className="flex items-center gap-2">
-                  <span className="text-lg font-bold text-cyan-400" style={{ fontFamily: 'JetBrains Mono, monospace' }}>4.2</span>
-                  <StarDisplay rating={4.2} size={12} />
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-[2px] p-3 flex items-start gap-2">
-              <ThumbsUp size={14} className="text-cyan-400 mt-0.5 flex-shrink-0" />
-              <p className="text-[11px] text-cyan-300" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Your reviews help other workers find fair worksites. Keep reviewing to build a safer community.
-              </p>
-            </div>
-
-            <button className="w-full mt-3 bg-[#27272A] hover:bg-[#3f3f46] text-[#FAFAFA] text-xs font-semibold py-2.5 rounded-[3px] flex items-center justify-center gap-2 transition-colors"
-              style={{ fontFamily: 'Inter, sans-serif' }}>
-              <Edit3 size={14} />
-              Write a Site Review
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Skills & Certifications */}
-      <div className="px-4 pb-4">
-        <div
-          className="bg-[#18181B] border border-[#27272A] rounded-[4px] p-4"
-          style={{ boxShadow: '4px 4px 0 0 #000' }}
-        >
-          <div className="flex items-center gap-2 mb-4">
-            <Wrench size={14} className="text-[#FACC15]" />
-            <h2 className="text-xs font-bold tracking-widest" style={{ fontFamily: 'Inter, sans-serif' }}>
-              SKILLS & CERTIFICATIONS
-            </h2>
-          </div>
-
-          {/* Skill Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {skillTags.map((skill) => (
-              <span
-                key={skill}
-                className="text-[11px] font-semibold px-2.5 py-1 rounded-[2px] bg-[#27272A] text-[#FAFAFA] border border-[#3f3f46]"
-                style={{ fontFamily: 'JetBrains Mono, monospace' }}
-              >
-                {skill}
+              <span className="bg-[#10B981]/20 text-[#34D399] px-2 py-0.5 rounded text-[9px] font-mono font-bold flex items-center gap-1 border border-[#10B981]/30">
+                <CheckCircle2 className="w-2.5 h-2.5" /> VERIFIED
               </span>
-            ))}
+            </div>
+            <p className="text-xs text-[#A1A1AA] font-mono truncate">
+              Welder & General Fabricator
+            </p>
+            <div className="flex items-center gap-2 mt-1 text-[#A1A1AA] text-[10px] font-mono">
+              <span>Navi Mumbai Hub</span>
+              <span>•</span>
+              <span>+91 98••• 4120</span>
+            </div>
           </div>
+        </div>
 
-          {/* Certifications */}
-          <div className="space-y-2">
-            {certifications.map((cert) => (
-              <div
-                key={cert.name}
-                className="flex items-center justify-between bg-[#09090B] rounded-[2px] p-3"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-emerald-500/10 rounded-[2px] flex items-center justify-center">
-                    <FileCheck size={14} className="text-emerald-400" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>{cert.name}</p>
-                    <p className="text-[10px] text-[#A1A1AA]" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                      {cert.issuer} · Expires {cert.expires}
-                    </p>
-                  </div>
-                </div>
-                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-[2px] bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
-                  style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                  ACTIVE
-                </span>
-              </div>
-            ))}
+        {/* Top 5% Worker Status Badge Ribbon */}
+        <div className="bg-[#27272A] border border-[#3F3F46] rounded-lg p-2.5 flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded bg-[#FACC15]/20 text-[#FACC15] flex items-center justify-center font-bold text-xs shrink-0">
+            ★
+          </div>
+          <div className="flex flex-col min-w-0">
+            <span className="text-[10px] font-mono text-[#FACC15] font-bold uppercase tracking-wider">
+              Top 5% Worker Status
+            </span>
+            <span className="text-[11px] text-[#FAFAFA] truncate font-mono">
+              Preferred Site Access & Instant Hire Enabled
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Stats Grid */}
-      <div className="px-4 pb-4">
-        <div
-          className="bg-[#18181B] border border-[#27272A] rounded-[4px] p-4"
-          style={{ boxShadow: '4px 4px 0 0 #000' }}
-        >
-          <div className="flex items-center gap-2 mb-4">
-            <BarChart3 size={14} className="text-[#FACC15]" />
-            <h2 className="text-xs font-bold tracking-widest" style={{ fontFamily: 'Inter, sans-serif' }}>
-              CAREER STATS
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2">
-            {statsGrid.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <div
-                  key={stat.label}
-                  className="bg-[#09090B] rounded-[2px] p-3 text-center"
-                >
-                  <Icon size={16} className="text-[#A1A1AA] mx-auto mb-2" />
-                  <p className="text-lg font-bold" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    {stat.value}
-                  </p>
-                  <p className="text-[9px] text-[#A1A1AA] mt-1 tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    {stat.label.toUpperCase()}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Settings */}
-      <div className="px-4 pb-6">
-        <div
-          className="bg-[#18181B] border border-[#27272A] rounded-[4px] p-4"
-          style={{ boxShadow: '4px 4px 0 0 #000' }}
-        >
-          <div className="flex items-center gap-2 mb-4">
-            <Bell size={14} className="text-[#FACC15]" />
-            <h2 className="text-xs font-bold tracking-widest" style={{ fontFamily: 'Inter, sans-serif' }}>
-              SETTINGS
-            </h2>
-          </div>
-
-          <div className="space-y-1">
-            {settingsItems.map((item) => (
-              <div
-                key={item.key}
-                className="flex items-center justify-between p-3 rounded-[2px] hover:bg-[#27272A]/30 transition-colors"
-              >
-                <div>
-                  <p className="text-xs font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>{item.label}</p>
-                  <p className="text-[10px] text-[#A1A1AA]" style={{ fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
-                </div>
-                {/* Toggle switch */}
-                <button
-                  onClick={() => handleToggle(item.key)}
-                  className={`relative w-10 h-5 rounded-full transition-colors ${
-                    toggles[item.key] ? 'bg-[#FACC15]' : 'bg-[#27272A]'
-                  }`}
-                >
-                  <span
-                    className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-[#09090B] transition-transform ${
-                      toggles[item.key] ? 'translate-x-5' : 'translate-x-0'
-                    }`}
-                  />
-                </button>
-              </div>
-            ))}
-          </div>
-
-          <button
-            className="w-full mt-4 bg-[#FACC15] hover:bg-[#eab308] text-[#09090B] font-bold py-3 rounded-[3px] text-sm flex items-center justify-center gap-2 transition-colors"
-            style={{ fontFamily: 'Inter, sans-serif', boxShadow: '3px 3px 0 0 #000' }}
+      {/* Quick Stats Metric Strip (3 Columns) */}
+      <div className="grid grid-cols-3 gap-2">
+        {statsGrid.map(stat => (
+          <div
+            key={stat.label}
+            className="bg-[#18181B] border border-[#27272A] p-2.5 rounded-xl flex flex-col items-center justify-center text-center shadow-hard"
           >
-            <Edit3 size={16} />
-            Edit Profile
-          </button>
+            <span className="text-[10px] font-mono text-[#A1A1AA] uppercase font-bold">{stat.label}</span>
+            <span className="text-lg font-extrabold text-[#FAFAFA] font-mono mt-0.5">{stat.value}</span>
+            <span className="text-[10px] font-mono text-[#A1A1AA]">{stat.sub}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Dual Reputation Engine Cards */}
+      <div className="flex flex-col gap-3">
+        {/* Box 1: Operational Score (Admin Evaluation) */}
+        <div className="bg-[#18181B] border border-[#27272A] rounded-xl p-4 shadow-hard flex flex-col gap-2.5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <HardHat className="w-4 h-4 text-[#FACC15]" />
+              <span className="text-xs font-mono font-bold text-[#FAFAFA] uppercase">
+                Operational Score (Contractor Rated)
+              </span>
+            </div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#27272A] text-[#A1A1AA]">
+              38 Shifts
+            </span>
+          </div>
+
+          <div className="flex items-baseline justify-between">
+            <div className="flex items-baseline gap-2">
+              <span className="text-3xl font-black text-[#FAFAFA] font-mono">4.9</span>
+              <div className="flex text-[#FACC15] text-sm">
+                ★★★★★
+              </div>
+            </div>
+            <span className="text-xs font-mono text-[#10B981] font-bold flex items-center gap-1">
+              <TrendingUp className="w-3.5 h-3.5" /> Superior Tier
+            </span>
+          </div>
+
+          {/* Breakdown Bars */}
+          <div className="flex flex-col gap-2 pt-1 border-t border-[#27272A]">
+            <div className="flex flex-col gap-1">
+              <div className="flex justify-between text-[11px] font-mono">
+                <span className="text-[#A1A1AA]">Punctuality</span>
+                <span className="font-bold text-[#FAFAFA]">5.0 ★ (100%)</span>
+              </div>
+              <div className="w-full bg-[#27272A] h-1.5 rounded-full overflow-hidden">
+                <div className="bg-[#FACC15] h-full rounded-full" style={{ width: '100%' }} />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <div className="flex justify-between text-[11px] font-mono">
+                <span className="text-[#A1A1AA]">Safety Compliance</span>
+                <span className="font-bold text-[#FAFAFA]">4.9 ★ (98%)</span>
+              </div>
+              <div className="w-full bg-[#27272A] h-1.5 rounded-full overflow-hidden">
+                <div className="bg-[#10B981] h-full rounded-full" style={{ width: '98%' }} />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <div className="flex justify-between text-[11px] font-mono">
+                <span className="text-[#A1A1AA]">Skill Delivery</span>
+                <span className="font-bold text-[#FAFAFA]">4.8 ★ (96%)</span>
+              </div>
+              <div className="w-full bg-[#27272A] h-1.5 rounded-full overflow-hidden">
+                <div className="bg-[#06B6D4] h-full rounded-full" style={{ width: '96%' }} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Box 2: Peer Review Credibility (Peer Trust) */}
+        <div className="bg-[#18181B] border border-[#27272A] rounded-xl p-4 shadow-hard flex flex-col gap-2.5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-[#10B981]" />
+              <span className="text-xs font-mono font-bold text-[#FAFAFA] uppercase">
+                Site Review Credibility (Peer Trust)
+              </span>
+            </div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#10B981]/20 text-[#34D399] font-bold">
+              Trusted Voice
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-3xl font-black text-[#10B981] font-mono">98%</span>
+                <span className="text-xs font-bold text-[#FAFAFA] font-mono">Truth Score</span>
+              </div>
+              <span className="text-[10px] text-[#A1A1AA] font-mono mt-0.5">
+                Validated by <strong className="text-[#FAFAFA]">340+ peer workers</strong>
+              </span>
+            </div>
+
+            <div className="w-12 h-12 rounded-full border-2 border-[#10B981] flex items-center justify-center font-mono font-bold text-xs text-[#10B981]">
+              98%
+            </div>
+          </div>
+
+          <p className="text-[11px] text-[#A1A1AA] font-mono bg-[#27272A] p-2 rounded">
+            🔒 14 Anonymous Site Audits Published • Protected by ZK-Proof Hash
+          </p>
         </div>
       </div>
+
+      {/* Action Callout: 30-Second Safety & PPE Audit */}
+      <div className="bg-[#18181B] border-2 border-[#FACC15] rounded-xl p-4 shadow-hard flex flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-mono font-bold text-[#FACC15] uppercase tracking-wider flex items-center gap-1.5">
+            <HardHat className="w-4 h-4" /> Action Required • Site 4B
+          </span>
+          <span className="text-[10px] font-mono px-2 py-0.5 bg-[#FACC15] text-[#09090B] font-bold rounded">
+            +50 XP
+          </span>
+        </div>
+
+        <p className="text-xs text-[#FAFAFA] font-mono">
+          Share quick anonymous feedback for today's shift at Apex Infra Site 4B. Confirms PPE gear and clean drinking water welfare.
+        </p>
+
+        {!auditSubmitted ? (
+          <button
+            onClick={() => setIsAuditModalOpen(true)}
+            className="w-full py-2.5 bg-[#FACC15] hover:bg-[#EAB308] text-[#09090B] font-mono text-xs font-bold uppercase rounded-lg shadow-sm btn-press transition-all cursor-pointer mt-1"
+          >
+            Complete 30-Sec Safety Audit
+          </button>
+        ) : (
+          <div className="w-full py-2 bg-[#10B981]/15 border border-[#10B981] rounded-lg text-center text-[#10B981] font-mono text-xs font-bold">
+            Feedback Logged & Sealed on Ledger ✓
+          </div>
+        )}
+      </div>
+
+      {/* Latest Shift Performance */}
+      <div className="bg-[#18181B] border border-[#27272A] rounded-xl p-3.5 shadow-hard flex flex-col gap-2">
+        <span className="text-xs font-mono font-bold uppercase text-[#A1A1AA]">
+          Latest Shift Performance
+        </span>
+        <div className="bg-[#27272A] p-3 rounded-lg border border-[#3F3F46]">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-bold text-[#FAFAFA]">Shift #42 • Site 4B Metalworks</span>
+            <span className="text-xs font-bold text-[#FACC15] font-mono">5.0 ★</span>
+          </div>
+          <p className="text-xs text-[#A1A1AA] italic font-mono">
+            "Excellent safety adherence during 6th floor scaffold welding. Tools returned in immaculate condition."
+          </p>
+          <span className="text-[10px] font-mono text-[#FACC15] block mt-1">
+            — Shankar Patil (Site Manager)
+          </span>
+        </div>
+      </div>
+
+      {/* Account & Protection Settings */}
+      <div className="bg-[#18181B] border border-[#27272A] rounded-xl p-3.5 shadow-hard flex flex-col gap-2 text-xs font-mono">
+        <span className="uppercase font-bold text-[#A1A1AA]">Account & Statutory Protection</span>
+        <div className="flex items-center justify-between py-1.5 border-b border-[#27272A]">
+          <span className="text-[#A1A1AA]">Emergency SOS Contact</span>
+          <span className="text-[#FAFAFA] font-bold">Deepa Patel (Spouse) • READY</span>
+        </div>
+        <div className="flex items-center justify-between py-1.5 border-b border-[#27272A]">
+          <span className="text-[#A1A1AA]">Payout Bank Account</span>
+          <span className="text-[#10B981] font-bold">patel.ramesh@okaxis • UPI VERIFIED</span>
+        </div>
+        <div className="flex items-center justify-between py-1.5">
+          <span className="text-[#A1A1AA]">Smart Escrow Ledger ID</span>
+          <span className="text-[#FACC15] font-mono">#0x82...FA12 (Immutable)</span>
+        </div>
+      </div>
+
+      {/* 30-Sec Audit Modal */}
+      {isAuditModalOpen && (
+        <div className="fixed inset-0 z-50 bg-[#09090B]/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
+          <div className="w-full max-w-sm bg-[#18181B] border-2 border-[#FACC15] rounded-xl p-5 flex flex-col gap-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[#27272A] pb-2">
+              <div>
+                <h3 className="text-sm font-bold text-[#FAFAFA]">Encrypted Worker Review</h3>
+                <span className="text-[10px] font-mono text-[#10B981]">Site 4B High-Rise • 30-Sec Audit</span>
+              </div>
+              <button onClick={() => setIsAuditModalOpen(false)} className="text-[#A1A1AA] hover:text-[#FAFAFA]">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleAuditSubmit} className="flex flex-col gap-3 text-xs font-mono">
+              <div>
+                <label className="text-[#FAFAFA] block mb-1.5">
+                  1. Was complete mandatory PPE provided on-site?
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setPpeAnswer('yes')}
+                    className={`py-2 rounded font-bold uppercase transition-all ${
+                      ppeAnswer === 'yes' ? 'bg-[#10B981] text-[#09090B]' : 'bg-[#27272A] text-[#A1A1AA]'
+                    }`}
+                  >
+                    Yes, Complete
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPpeAnswer('no')}
+                    className={`py-2 rounded font-bold uppercase transition-all ${
+                      ppeAnswer === 'no' ? 'bg-[#F43F5E] text-white' : 'bg-[#27272A] text-[#A1A1AA]'
+                    }`}
+                  >
+                    No / Faulty
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="text-[#FAFAFA] block mb-1.5">
+                  2. Was chilled clean drinking water accessible?
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setWaterAnswer('yes')}
+                    className={`py-2 rounded font-bold uppercase transition-all ${
+                      waterAnswer === 'yes' ? 'bg-[#10B981] text-[#09090B]' : 'bg-[#27272A] text-[#A1A1AA]'
+                    }`}
+                  >
+                    Verified Water
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setWaterAnswer('no')}
+                    className={`py-2 rounded font-bold uppercase transition-all ${
+                      waterAnswer === 'no' ? 'bg-[#F43F5E] text-white' : 'bg-[#27272A] text-[#A1A1AA]'
+                    }`}
+                  >
+                    Empty / Warm
+                  </button>
+                </div>
+              </div>
+
+              <div className="bg-[#27272A] p-2 rounded text-[10px] text-[#A1A1AA]">
+                🔒 Your response is converted to an anonymous ZK-Proof. No supervisors can identify your device.
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-2.5 bg-[#FACC15] hover:bg-[#EAB308] text-[#09090B] font-bold uppercase rounded-lg shadow-sm"
+              >
+                Submit Anonymously (+50 XP)
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
