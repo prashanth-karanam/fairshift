@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Wrench, Building2, ArrowRight, Shield, Volume2, Globe, CheckCircle2
-} from 'lucide-react';
+import { Wrench, Building2, ArrowRight, Shield, Volume2, CheckCircle2, Sparkles, ChevronRight } from 'lucide-react';
 
 export default function RoleGateway() {
   const navigate = useNavigate();
@@ -12,7 +10,7 @@ export default function RoleGateway() {
   const heroContent = {
     en: {
       title: 'How will you use FairShift today?',
-      desc: 'Empowering frontline trades and verified contractors with audited escrow wages, fatigue protection, and real-time safety telemetry.',
+      desc: 'Empowering frontline workers and verified contractors with audited escrow wages, fatigue safety, and real-time biometric telemetry.',
       workerTitle: "I'M A FRONTLINE WORKER",
       workerSub: 'Daily Instant Pay, tamper-proof skill passport & anonymous safety hazard reporting',
       employerTitle: "I'M AN EMPLOYER / CONTRACTOR",
@@ -51,8 +49,8 @@ export default function RoleGateway() {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       const textToSpeak = selectedLang === 'hi' 
-        ? "FairShift में आपका स्वागत है। आप एक श्रमिक हैं या नियोक्ता?"
-        : "Welcome to FairShift. Are you a frontline worker or an employer?";
+        ? "FairShift में आपका स्वागत है। क्या आप एक श्रमिक हैं या ठेकेदार?"
+        : "Welcome to FairShift. Please select your role to proceed.";
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.onend = () => setIsSpeaking(false);
       utterance.onerror = () => setIsSpeaking(false);
@@ -63,40 +61,37 @@ export default function RoleGateway() {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090B] flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
-      {/* Background Grid Pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage: 'linear-gradient(#FAFAFA 1px, transparent 1px), linear-gradient(90deg, #FAFAFA 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }}
-      />
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50/60 via-slate-50 to-white flex flex-col items-center justify-center px-4 py-10 relative overflow-hidden">
+      {/* Decorative Warm Ambient Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-yellow-200/40 via-amber-100/20 to-transparent blur-3xl pointer-events-none rounded-full" />
 
-      <div className="relative z-10 flex flex-col items-center max-w-3xl w-full">
-        {/* Top UN SDG 8 Badge */}
-        <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#18181B] border border-[#27272A] text-xs font-mono text-[#FACC15]">
-          <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-          <span className="font-semibold tracking-wider uppercase">UN SDG 8 • Decent Work & Fair Wage Standard</span>
-          <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+      <div className="relative z-10 flex flex-col items-center max-w-2xl w-full">
+        {/* Top UN SDG 8 Pill */}
+        <div className="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-slate-800 shadow-sm border border-yellow-200 text-xs font-semibold">
+          <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+          <span className="text-amber-700 font-bold">UN SDG 8</span>
+          <span className="text-slate-400">•</span>
+          <span className="text-slate-600">Decent Work & Fair Wage Standard</span>
+          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 ml-0.5" />
         </div>
 
-        {/* Logo */}
-        <div className="mb-1 text-center">
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
-            <span className="text-[#FACC15]">FAIR</span>
-            <span className="text-[#FAFAFA]">SHIFT</span>
+        {/* Brand Logo & Wordmark */}
+        <div className="flex items-center gap-2.5 mb-2">
+          <div className="w-12 h-12 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center font-black text-xl shadow-md transform rotate-3">
+            ⚡
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900">
+            <span className="text-amber-500">FAIR</span>SHIFT
           </h1>
         </div>
 
-        {/* Tagline */}
-        <p className="text-[#A1A1AA] text-xs sm:text-sm text-center mb-6 tracking-wide font-mono">
+        <p className="text-slate-500 text-xs sm:text-sm text-center mb-6 max-w-md font-medium">
           Frontline Workforce Platform — Fair Shifts. Fair Pay. Full Transparency.
         </p>
 
-        {/* Multilingual Bar + Audio Guide */}
-        <div className="w-full max-w-md bg-[#18181B] border border-[#27272A] rounded-xl p-2 mb-6 flex items-center justify-between gap-2 shadow-sm">
-          <div className="flex items-center gap-1.5 overflow-x-auto">
+        {/* Multilingual Selector + Voice Assistant Pill */}
+        <div className="bg-white/90 backdrop-blur-md border border-slate-200/90 rounded-2xl p-1.5 mb-6 flex items-center justify-between gap-3 shadow-sm w-full max-w-md">
+          <div className="flex items-center gap-1 overflow-x-auto p-0.5">
             {[
               { id: 'en', label: 'EN' },
               { id: 'hi', label: 'हिंदी' },
@@ -106,10 +101,10 @@ export default function RoleGateway() {
               <button
                 key={lang.id}
                 onClick={() => setSelectedLang(lang.id)}
-                className={`px-3 py-1 rounded text-xs font-mono font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   selectedLang === lang.id
-                    ? 'bg-[#FACC15] text-[#09090B] shadow-sm'
-                    : 'bg-[#27272A] text-[#A1A1AA] hover:text-[#FAFAFA]'
+                    ? 'bg-amber-400 text-slate-900 shadow-sm scale-105'
+                    : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
                 {lang.label}
@@ -119,115 +114,131 @@ export default function RoleGateway() {
 
           <button
             onClick={playSpeech}
-            className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all ${
-              isSpeaking ? 'bg-[#10B981] text-[#09090B]' : 'bg-[#27272A] text-[#FACC15] hover:bg-[#3F3F46]'
+            className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all ${
+              isSpeaking ? 'bg-emerald-500 text-white animate-pulse' : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
             }`}
-            title="Listen to voice guide"
+            title="Listen to audio guide"
           >
-            <Volume2 className={`w-4 h-4 ${isSpeaking ? 'animate-pulse' : ''}`} />
+            <Volume2 className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Escrow Ticker Banner */}
-        <div className="w-full max-w-2xl bg-[#18181B] border border-[#27272A] rounded-xl p-3.5 mb-8 flex items-center justify-between shadow-hard">
+        {/* Active Escrow Guarantee Ticker Banner */}
+        <div className="w-full bg-white rounded-3xl p-4 mb-6 shadow-sm border border-yellow-200/70 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#27272A] flex items-center justify-center text-[#FACC15] font-bold">
+            <div className="w-11 h-11 rounded-2xl bg-amber-400/20 text-amber-700 flex items-center justify-center font-bold text-lg">
               ₹
             </div>
             <div>
-              <p className="text-[10px] font-mono uppercase tracking-wider text-[#A1A1AA]">Locked in Active Escrow (Indian Labor Protocol)</p>
-              <p className="text-base font-bold text-[#FAFAFA] font-mono">₹48,92,400 <span className="text-[#06B6D4] text-xs font-normal">● 1,420 Active Shifts</span></p>
+              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">Locked in Active Escrow Pool</p>
+              <p className="text-lg font-extrabold text-slate-900 font-mono">₹48,92,400 <span className="text-emerald-600 text-xs font-bold ml-1">● 1,420 Active Shifts</span></p>
             </div>
           </div>
-          <span className="hidden sm:inline-block px-2.5 py-1 rounded bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] font-mono text-[10px] font-bold">
-            BOCW SAFE 100%
+          <span className="hidden sm:inline-flex px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+            BOCW Act 100% Safe
           </span>
         </div>
 
-        {/* Dynamic Question Hero */}
-        <div className="text-center mb-6 max-w-xl">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#FAFAFA] mb-1">
+        {/* Gateway Heading */}
+        <div className="text-center mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-1">
             {current.title}
           </h2>
-          <p className="text-xs text-[#A1A1AA] font-mono">
+          <p className="text-xs text-slate-500 max-w-lg mx-auto">
             {current.desc}
           </p>
         </div>
 
-        {/* Role Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full max-w-2xl">
-          {/* Worker Card */}
+        {/* 2 Main Role Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+          {/* Card A: Frontline Worker */}
           <button
             onClick={() => navigate('/worker')}
-            className="group relative bg-[#18181B] border border-[#27272A] border-l-4 border-l-[#FACC15] rounded p-6 text-left transition-all hover:bg-[#27272A] shadow-hard cursor-pointer"
+            className="group relative bg-white hover:bg-yellow-50/40 rounded-3xl p-6 text-left border-2 border-amber-300 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
           >
-            <div className="flex items-start gap-4">
-              <div className="bg-[#FACC15]/10 p-3 rounded shrink-0">
-                <Wrench className="w-7 h-7 text-[#FACC15]" strokeWidth={2} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <span className="text-[10px] font-mono text-[#FACC15] font-bold uppercase tracking-wider block mb-0.5">
-                  Frontline Trade
+            <div>
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                  <Wrench className="w-7 h-7" strokeWidth={2.5} />
+                </div>
+                <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold">
+                  Instant Pay
                 </span>
-                <h3 className="text-[#FAFAFA] text-base font-bold tracking-wide mb-1 leading-tight">
-                  {current.workerTitle}
-                </h3>
-                <p className="text-[#A1A1AA] text-xs leading-relaxed font-mono">
-                  {current.workerSub}
-                </p>
               </div>
-              <ArrowRight className="w-5 h-5 text-[#A1A1AA] group-hover:text-[#FACC15] transition-colors mt-1 shrink-0" />
+
+              <span className="text-xs font-bold text-amber-600 uppercase tracking-wider block mb-1">
+                Frontline Field Trade
+              </span>
+              <h3 className="text-lg font-extrabold text-slate-900 mb-2 leading-tight">
+                {current.workerTitle}
+              </h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                {current.workerSub}
+              </p>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-[#27272A] flex flex-wrap gap-1.5">
-              {['₹ Instant Pay', 'Radar Geofence', 'ZK-Reviews', 'Skill Passport'].map(tag => (
-                <span key={tag} className="text-[9px] text-[#FAFAFA] bg-[#27272A] px-2 py-0.5 rounded font-mono">
-                  {tag}
-                </span>
-              ))}
+            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div className="flex flex-wrap gap-1.5">
+                {['Daily Payout', 'Radar GPS', 'Skill Passport'].map(tag => (
+                  <span key={tag} className="text-[10px] text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="w-8 h-8 rounded-full bg-amber-400 text-slate-900 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <ChevronRight className="w-4 h-4" />
+              </div>
             </div>
           </button>
 
-          {/* Employer Card */}
+          {/* Card B: Employer / Contractor */}
           <button
             onClick={() => navigate('/employer')}
-            className="group relative bg-[#18181B] border border-[#27272A] border-l-4 border-l-[#06B6D4] rounded p-6 text-left transition-all hover:bg-[#27272A] shadow-hard cursor-pointer"
+            className="group relative bg-white hover:bg-slate-50/80 rounded-3xl p-6 text-left border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
           >
-            <div className="flex items-start gap-4">
-              <div className="bg-[#06B6D4]/10 p-3 rounded shrink-0">
-                <Building2 className="w-7 h-7 text-[#06B6D4]" strokeWidth={2} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <span className="text-[10px] font-mono text-[#06B6D4] font-bold uppercase tracking-wider block mb-0.5">
-                  Principal Contractor
+            <div>
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-slate-900 text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                  <Building2 className="w-7 h-7" strokeWidth={2} />
+                </div>
+                <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-[11px] font-bold">
+                  Desktop Console
                 </span>
-                <h3 className="text-[#FAFAFA] text-base font-bold tracking-wide mb-1 leading-tight">
-                  {current.employerTitle}
-                </h3>
-                <p className="text-[#A1A1AA] text-xs leading-relaxed font-mono">
-                  {current.employerSub}
-                </p>
               </div>
-              <ArrowRight className="w-5 h-5 text-[#A1A1AA] group-hover:text-[#06B6D4] transition-colors mt-1 shrink-0" />
+
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">
+                Principal Contractor / Ops
+              </span>
+              <h3 className="text-lg font-extrabold text-slate-900 mb-2 leading-tight">
+                {current.employerTitle}
+              </h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                {current.employerSub}
+              </p>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-[#27272A] flex flex-wrap gap-1.5">
-              {['BOCW 1996 Audit', 'Fatigue Radar', 'Whistle Triage', '482 Personnel'].map(tag => (
-                <span key={tag} className="text-[9px] text-[#FAFAFA] bg-[#27272A] px-2 py-0.5 rounded font-mono">
-                  {tag}
-                </span>
-              ))}
+            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div className="flex flex-wrap gap-1.5">
+                {['BOCW 1996 Audit', 'Fatigue Radar', '482 Staff'].map(tag => (
+                  <span key={tag} className="text-[10px] text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <ChevronRight className="w-4 h-4" />
+              </div>
             </div>
           </button>
         </div>
 
-        {/* Institutional Guarantees Footer */}
-        <div className="mt-10 text-center text-[10px] font-mono text-[#A1A1AA]/60 flex flex-wrap items-center justify-center gap-4">
-          <span>ILO C155 & ISO 45001 Compliant</span>
+        {/* Footer Guarantees */}
+        <div className="mt-8 text-center text-[11px] text-slate-400 font-medium flex flex-wrap items-center justify-center gap-3">
+          <span>ILO C155 & ISO 45001 Standard</span>
           <span>•</span>
-          <span>Indian Labor Code (BOCW 1996)</span>
+          <span>Building and Other Construction Workers (BOCW 1996)</span>
           <span>•</span>
-          <span>Zero Retaliation ZK-Cryptographic Attestation</span>
+          <span>Zero Retaliation Protocol</span>
         </div>
       </div>
     </div>
