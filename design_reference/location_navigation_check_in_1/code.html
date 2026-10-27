@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#131316;color:#e4e1e6;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-container": "#006273", "on-tertiary-fixed": "#001f26", "on-error-container": "#ffdad6", "inverse-primary": "#735c00", "surface-variant": "#353438", "on-tertiary-fixed-variant": "#004e5c", "surface-container-highest": "#353438", "surface": "#131316", "on-secondary": "#003824", "on-error": "#690005", "surface-container": "#1f1f22", "error-container": "#93000a", "primary-fixed-dim": "#eec200", "surface-container-low": "#1b1b1e", "on-primary-container": "#6c5700", "tertiary-fixed-dim": "#4cd7f6", "primary-container": "#facc15", "on-secondary-fixed": "#002113", "error": "#ffb4ab", "surface-bright": "#39393c", "tertiary-fixed": "#acedff", "primary": "#ffecb9", "primary-fixed": "#ffe083", "secondary-container": "#00a572", "tertiary-container": "#61e1ff", "on-primary-fixed": "#231b00", "surface-container-high": "#2a2a2d", "secondary-fixed": "#6ffbbe", "on-secondary-container": "#00311f", "on-tertiary": "#003640", "outline-variant": "#4d4632", "surface-container-lowest": "#0e0e11", "surface-tint": "#eec200", "background": "#131316", "outline": "#9a9078", "tertiary": "#cef4ff", "inverse-surface": "#e4e1e6", "on-surface-variant": "#d1c6ab", "on-background": "#e4e1e6", "secondary": "#4edea3", "on-secondary-fixed-variant": "#005236", "secondary-fixed-dim": "#4edea3", "on-primary": "#3c2f00", "on-primary-fixed-variant": "#574500", "surface-dim": "#131316", "inverse-on-surface": "#303033", "on-surface": "#e4e1e6" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-2xs": "0.125rem", "space-lg": "1rem", "margin": "2rem", "space-2xl": "2rem", "space-md": "0.75rem", "margin-mobile": "1rem", "space-xs": "0.25rem", "space-3xl": "3rem", "gutter-mobile": "0.75rem", "space-xl": "1.5rem", "space-sm": "0.5rem", "gutter": "1rem" }, "fontFamily": { "headline-md": ["Inter"], "display-lg-mobile": ["Inter"], "display-lg": ["Inter"], "body-sm": ["JetBrains Mono"], "headline-lg-mobile": ["Inter"], "headline-lg": ["Inter"], "code-inline": ["JetBrains Mono"], "body-lg": ["JetBrains Mono"], "body-md": ["JetBrains Mono"], "label-caps": ["JetBrains Mono"], "data-metric": ["JetBrains Mono"], "headline-sm": ["Inter"] }, "fontSize": { "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "body-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "code-inline": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "500" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "label-caps": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "data-metric": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.3)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[20px]">bolt</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface font-bold leading-none">FairShift</span><span class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-space-2xs">Active Shift</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-2xs px-space-xs py-space-2xs rounded-lg bg-surface-container-high"><span class="material-symbols-outlined text-secondary text-[16px]">near_me</span><span class="font-label-caps text-label-caps text-secondary uppercase">GPS OK</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin-mobile pb-space-2xl gap-space-md">
+<!-- Top Dispatch Status Banner -->
+<div class="w-full bg-surface-container p-space-md rounded-xl shadow-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-3 h-3 rounded-full bg-secondary animate-ping"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Applied &amp; Accepted</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Site 4B High-Rise (Apex Infra)</span>
+</div>
+</div>
+<div class="px-space-sm py-space-2xs bg-surface-container-high rounded text-on-surface-variant font-code-inline text-code-inline">
+      SHIFT #7842
+    </div>
+</div>
+<!-- Live Mini-Map Preview Card -->
+<div class="relative w-full bg-surface-container rounded-xl overflow-hidden shadow-lg flex flex-col">
+<!-- Map Container -->
+<div class="w-full h-44 bg-cover bg-center relative" data-location="Palm Beach Road, Navi Mumbai, India" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJw-y8_lg5vjt01hjK4LzOYoq8KhKLCnKQEzajr-gU77shJ4PblYbOQpS-5HfZ1pmUXlYDHhbIpd2riZxrzk0UwjFrPBCtuylgNpn9zgpqxaRJ2o6hLah8uJoofYd-2qbrcPR3b5W7E8u6jeUnxe-sk0iSvFv0iITs_QzUt84y21CD3yBljRf4hEM2omN9hNg3_ljr_Ji6oXxR5O9Z5UAE0vU0Zc6BEGoOGUvhNyCkOnbVun28jlCtzA')">
+<!-- Gradient overlay for tactical data readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface/40 to-transparent"></div>
+<!-- Simulated GPS Telemetry Graphic -->
+<div class="absolute top-space-sm left-space-sm flex items-center gap-space-2xs bg-surface/90 px-space-xs py-space-2xs rounded shadow">
+<span class="material-symbols-outlined text-secondary text-[16px] animate-pulse">satellite_alt</span>
+<span class="font-label-caps text-label-caps text-on-surface">RADAR ACCURACY: ±2M</span>
+</div>
+<!-- Live ETA Overlay Bar -->
+<div class="absolute bottom-space-sm left-space-sm right-space-sm bg-surface-container-lowest/95 p-space-sm rounded-lg flex items-center justify-between shadow">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">directions_walk</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">12 mins <span class="font-body-sm text-body-sm text-on-surface-variant">(1.8 km)</span></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">via Palm Beach Rd Corridor</span>
+</div>
+</div>
+<div class="flex items-center gap-space-2xs bg-surface-container-high px-space-xs py-space-2xs rounded">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-code-inline text-code-inline text-secondary">LIVE ROUTE</span>
+</div>
+</div>
+</div>
+<!-- Quick Navigation External Actions -->
+<div class="p-space-sm bg-surface-container grid grid-cols-2 gap-space-sm">
+<button class="flex items-center justify-center gap-space-2xs py-space-sm bg-surface-container-high hover:bg-surface-bright text-on-surface rounded-lg transition-colors" onclick="window.open('https://maps.google.com', '_blank')">
+<span class="material-symbols-outlined text-[18px] text-tertiary">near_me</span>
+<span class="font-label-caps text-label-caps uppercase">Google Maps</span>
+</button>
+<a class="flex items-center justify-center gap-space-2xs py-space-sm bg-surface-container-high hover:bg-surface-bright text-on-surface rounded-lg transition-colors" href="tel:+919820199411">
+<span class="material-symbols-outlined text-[18px] text-secondary">call</span>
+<span class="font-label-caps text-label-caps uppercase truncate">Call Shankar</span>
+</a>
+</div>
+</div>
+<!-- Prominent GPS Arrival Detection Card -->
+<div class="w-full bg-surface-container rounded-xl p-space-md shadow-xl flex flex-col gap-space-md relative overflow-hidden" id="geofenceCard">
+<!-- Geofence Accent Pip -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">fmd_good</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase tracking-wide">Live GPS Geofence</span>
+</div>
+<span class="font-code-inline text-code-inline text-secondary px-space-xs py-space-2xs rounded bg-surface-container-highest">45m from Entrance</span>
+</div>
+<!-- High-Impact State Indicator -->
+<div class="w-full bg-surface-container-highest p-space-sm rounded-lg flex items-center gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary text-[16px] font-bold">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-caps text-label-caps text-secondary font-bold uppercase tracking-wider">GPS Confirmed • Geofence Cleared</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">YOU HAVE REACHED THE WORK LOCATION!</span>
+</div>
+</div>
+<!-- Voice Announcement Banner / Toggle -->
+<div class="flex items-center justify-between bg-surface-container-low px-space-sm py-space-xs rounded-lg">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-primary-container text-[18px]" id="voiceIcon">volume_up</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">"You are within 50m of Site 4B"</span>
+</div>
+<button class="px-space-xs py-space-2xs bg-surface-container-high rounded text-on-surface font-label-caps text-label-caps uppercase hover:bg-surface-bright transition-colors" id="toggleAudioBtn" onclick="toggleAudio()" type="button">
+        Replay
+      </button>
+</div>
+<!-- Clock In Primary Action Button -->
+<button class="w-full h-14 bg-primary-container hover:bg-primary-fixed-dim active:scale-[0.99] text-on-primary-container rounded-lg shadow-lg flex items-center justify-center gap-space-sm transition-transform cursor-pointer" id="clockInBtn" onclick="handleClockIn()" type="button">
+<span class="material-symbols-outlined text-[24px]">lock_open</span>
+<span class="font-body-lg text-body-lg font-bold tracking-tight uppercase">Mark Reached &amp; Clock In</span>
+</button>
+</div>
+<!-- Operational Briefing Summary -->
+<div class="w-full bg-surface-container rounded-xl p-space-md shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">assignment</span>
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wide">Shift Briefing</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary px-space-xs py-space-2xs bg-surface-container-highest rounded">CONTRACT VERIFIED</span>
+</div>
+<!-- Supervisor & Site Dispatch -->
+<div class="flex items-center justify-between bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[22px]">engineering</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Reporting Supervisor</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Shankar Patil</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Chief Site Manager • Gates 3 &amp; 4</span>
+</div>
+</div>
+<a class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary hover:bg-surface-bright transition-colors" href="tel:+919820199411">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</a>
+</div>
+<!-- Shift Financials & Hours -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-space-2xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Shift Timeline</span>
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
+<span class="font-body-md text-body-md text-on-surface">08:00 AM - 04:30 PM</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Standard 8.5 Hr Shift</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-space-2xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Base Compensation</span>
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">payments</span>
+<span class="font-body-md text-body-md text-secondary font-bold">₹800 Daily Base</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">OT: ₹120/hr eligible</span>
+</div>
+</div>
+<!-- Required Gear & PPE Specs -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Mandatory Safety Equipment</span>
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center gap-space-2xs px-space-xs py-space-2xs bg-surface-container-high rounded">
+<span class="material-symbols-outlined text-primary-container text-[16px]">hardware</span>
+<span class="font-body-sm text-body-sm text-on-surface">Hard Hat Required</span>
+</div>
+<div class="flex items-center gap-space-2xs px-space-xs py-space-2xs bg-surface-container-high rounded">
+<span class="material-symbols-outlined text-primary-container text-[16px]">hiking</span>
+<span class="font-body-sm text-body-sm text-on-surface">Safety Steel-Toe Boots</span>
+</div>
+</div>
+<div class="flex items-center gap-space-2xs mt-space-2xs">
+<span class="material-symbols-outlined text-secondary text-[16px]">inventory_2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Full secondary PPE kits available on-site at security gate</span>
+</div>
+</div>
+<!-- Verified Worksite Amenities (SDG 8 Quality Guarantee) -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">FairShift Verified Site Welfare</span>
+<div class="grid grid-cols-3 gap-space-xs">
+<div class="bg-surface-container-low p-space-xs rounded flex flex-col items-center justify-center text-center gap-space-2xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">water_drop</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-tight">Clean Drinking Water</span>
+<span class="material-symbols-outlined text-secondary text-[14px]">check_circle</span>
+</div>
+<div class="bg-surface-container-low p-space-xs rounded flex flex-col items-center justify-center text-center gap-space-2xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">roofing</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-tight">Shaded Rest Shelter</span>
+<span class="material-symbols-outlined text-secondary text-[14px]">check_circle</span>
+</div>
+<div class="bg-surface-container-low p-space-xs rounded flex flex-col items-center justify-center text-center gap-space-2xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">medical_services</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-tight">First Aid Station</span>
+<span class="material-symbols-outlined text-secondary text-[14px]">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Arrival Micro-Interaction Script -->
+<script>
+    function toggleAudio() {
+      const btn = document.getElementById('toggleAudioBtn');
+      const icon = document.getElementById('voiceIcon');
+      btn.innerText = 'PLAYING...';
+      icon.classList.add('text-secondary');
+      
+      // Simulate speech prompt
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance("You are within 50 meters of Site 4B. Geofence confirmed. Please clock in.");
+        utterance.rate = 1;
+        window.speechSynthesis.speak(utterance);
+      }
+      
+      setTimeout(() => {
+        btn.innerText = 'REPLAY';
+        icon.classList.remove('text-secondary');
+      }, 3500);
+    }
+
+    function handleClockIn() {
+      const clockBtn = document.getElementById('clockInBtn');
+      clockBtn.disabled = true;
+      clockBtn.classList.remove('bg-primary-container', 'text-on-primary-container');
+      clockBtn.classList.add('bg-secondary-container', 'text-on-secondary-container');
+      clockBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[24px] animate-spin">sync</span>
+        <span class="font-body-lg text-body-lg font-bold uppercase">Verifying Biometrics & Ledger...</span>
+      `;
+      
+      setTimeout(() => {
+        clockBtn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+        clockBtn.classList.add('bg-secondary', 'text-on-secondary');
+        clockBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[24px]">verified</span>
+          <span class="font-body-lg text-body-lg font-bold uppercase">Clocked In &bull; 08:01 AM</span>
+        `;
+      }, 1600);
+    }
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary-container"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-2xs text-on-surface-variant transition-colors hover:text-on-surface" data-path="jobs" href="#"><span class="material-symbols-outlined text-[22px]">work_outline</span><span class="font-label-caps text-label-caps uppercase">Jobs</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-2xs transition-colors text-primary-container" data-path="active-shift" href="#"><span class="material-symbols-outlined text-[22px]">timer</span><span class="font-label-caps text-label-caps uppercase">Shift</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-2xs text-on-surface-variant transition-colors hover:text-on-surface" data-path="reviews" href="#"><span class="material-symbols-outlined text-[22px]">rate_review</span><span class="font-label-caps text-label-caps uppercase">Reviews</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-2xs text-on-surface-variant transition-colors hover:text-on-surface" data-path="my-profile" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-caps text-label-caps uppercase">Profile</span></a></div></nav></body></html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-secondary-fixed-variant":"#3f465c","primary":"#785a00","tertiary-fixed-dim":"#83cfff","on-error-container":"#93000a","tertiary":"#00658e","tertiary-fixed":"#c7e7ff","secondary-fixed-dim":"#bec6e0","inverse-primary":"#f7be1d","on-primary-fixed-variant":"#5a4300","on-background":"#0b1c30","surface-bright":"#f8f9ff","primary-container":"#eab308","on-tertiary-container":"#005072","on-tertiary":"#ffffff","surface-tint":"#785a00","on-secondary-container":"#5c647a","on-surface":"#0b1c30","on-surface-variant":"#4f4633","secondary-container":"#dae2fd","on-primary-fixed":"#251a00","secondary-fixed":"#dae2fd","error-container":"#ffdad6","surface-dim":"#cbdbf5","secondary":"#565e74","on-secondary":"#ffffff","on-tertiary-fixed":"#001e2e","surface":"#f8f9ff","surface-container-lowest":"#ffffff","outline":"#817660","on-error":"#ffffff","error":"#ba1a1a","surface-container":"#e5eeff","tertiary-container":"#60c5ff","inverse-surface":"#213145","on-primary":"#ffffff","primary-fixed":"#ffdf9a","surface-variant":"#d3e4fe","background":"#f8f9ff","on-primary-container":"#604700","surface-container-low":"#eff4ff","primary-fixed-dim":"#f7be1d","surface-container-high":"#dce9ff","on-secondary-fixed":"#131b2e","on-tertiary-fixed-variant":"#004c6c","inverse-on-surface":"#eaf1ff","surface-container-highest":"#d3e4fe","outline-variant":"#d3c5ac"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"gutter-desktop":"1.5rem","margin":"1rem","space-xs":"0.25rem","margin-tablet":"1.5rem","space-md":"0.75rem","space-sm":"0.5rem","gutter":"1rem","space-xl":"2rem","margin-desktop":"2rem","space-lg":"1.25rem"},fontFamily:{"body-lg":["Inter"],"headline-xl-mobile":["Inter"],"label-sm":["Inter"],"headline-sm":["Inter"],"headline-lg":["Inter"],"headline-lg-mobile":["Inter"],"label-lg":["Inter"],"label-md":["Inter"],"body-sm":["Inter"],"headline-xl":["Inter"],"headline-md":["Inter"],"body-md":["Inter"]},fontSize:{"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"400"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"800"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"700"}],"headline-sm":["16px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.015em","fontWeight":"700"}],"headline-lg-mobile":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"800"}],"headline-md":["20px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-md":["15px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.06)]"><div class="h-16 w-full px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[20px]">shield</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface uppercase">FairShift Pro</span><span class="font-label-sm text-label-sm text-secondary tracking-wider uppercase">Employer Hub</span></div></div><div class="h-6 w-px bg-surface-container-high"></div><div class="flex items-center bg-surface-container-low rounded-lg px-space-md py-space-xs"><span class="material-symbols-outlined text-on-surface-variant text-[18px] mr-space-xs">domain</span><select class="bg-transparent font-label-md text-label-md text-on-surface font-semibold focus:outline-none cursor-pointer pr-space-xs"><option selected="">Construction Site 4B</option><option>Campus Facilities Zone A</option></select></div><div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase tracking-wider"><span class="w-2 h-2 rounded-full bg-on-primary-fixed animate-pulse"></span><span>BOCW Act 1996 Compliant</span></div></div><div class="flex items-center gap-space-md"><button class="relative w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-low hover:bg-surface-container hover:text-on-surface transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary-container"></span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="text-right hidden sm:flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight">M. Vance</span><span class="font-label-sm text-label-sm text-secondary">Chief Field Supervisor</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-lowest shadow-[1px_0_8px_rgba(0,0,0,0.03)] z-40 flex flex-col justify-between py-space-lg"><nav class="px-space-md flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="flex items-center px-space-md py-space-sm transition-colors bg-primary-container text-on-primary-container font-bold rounded-lg" data-path="shift-roster" href="#"><span class="material-symbols-outlined mr-space-md text-[20px]">table_chart</span>Shift Roster</a><a class="flex items-center px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="workforce-presence" href="#"><span class="material-symbols-outlined mr-space-md text-[20px]">badge</span>Workforce Presence</a><a class="flex items-center px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="bocw-compliance-audit" href="#"><span class="material-symbols-outlined mr-space-md text-[20px]">verified</span>BOCW Compliance Audit</a><a class="flex items-center px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="hazard-safety-logs" href="#"><span class="material-symbols-outlined mr-space-md text-[20px]">warning</span>Hazard & Safety Logs</a><a class="flex items-center px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="wage-records" href="#"><span class="material-symbols-outlined mr-space-md text-[20px]">payments</span>Wage Records</a></nav><div class="px-space-md"><div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Zone Status</span><div class="flex items-center justify-between"><span class="font-body-sm text-body-sm text-on-surface font-semibold">Shift 01 Active</span><span class="w-2 h-2 rounded-full bg-primary-container"></span></div><span class="font-label-sm text-label-sm text-on-surface-variant">482 Field Personnel</span></div></div></aside><div class="pl-64"><main class="w-full pt-16 bg-background min-h-screen px-gutter-desktop py-space-lg"><div class="flex flex-col w-full">
+<!-- Top Workspace Context Bar -->
+<div class="w-full bg-surface-container-lowest p-space-md shadow-sm rounded-xl mb-space-lg flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Industry Switcher Dropdown -->
+<div class="relative inline-block text-left" id="industryDropdownContainer">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block mb-1">Operational Environment</label>
+<button class="flex items-center justify-between gap-space-md bg-surface-container px-space-md py-space-sm rounded-lg hover:bg-surface-container-high transition-colors text-left focus:outline-none" id="industryDropdownBtn">
+<div class="flex items-center gap-space-sm">
+<span class="text-xl">🏗️</span>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block leading-tight" id="currentIndustryTitle">Apex Infrastructure — High-Rise Site 4B</span>
+<span class="font-label-sm text-label-sm text-secondary" id="currentIndustrySubtitle">Heavy Civil & Structural Construction</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] ml-space-sm">expand_more</span>
+</button>
+<div class="hidden absolute left-0 mt-space-xs w-80 bg-surface-container-lowest rounded-xl shadow-xl z-30 p-space-xs" id="industryDropdownMenu">
+<div class="px-space-sm py-space-xs font-label-sm text-label-sm uppercase tracking-wider text-secondary">Switch Active Site Ledger</div>
+<button class="w-full text-left flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors mb-1" onclick="switchSite('🏗️ Apex Infrastructure — High-Rise Site 4B', 'Heavy Civil & Structural Construction')">
+<span class="text-lg">🏗️</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface">Apex Infrastructure — High-Rise Site 4B</div>
+<div class="font-label-sm text-label-sm text-secondary">Construction Protocol #BOCW-96</div>
+</div>
+</button>
+<button class="w-full text-left flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg hover:bg-surface-container transition-colors mb-1" onclick="switchSite('🏫 SRM University Facilities — Zone A', 'Campus Maintenance & HVAC Operations')">
+<span class="text-lg">🏫</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface">SRM University Facilities — Zone A</div>
+<div class="font-label-sm text-label-sm text-secondary">Campus & Education Facility Ops</div>
+</div>
+</button>
+<button class="w-full text-left flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg hover:bg-surface-container transition-colors" onclick="switchSite('🏥 Metro Health Logistics — Ward 3', 'Clinical Shift Compliance & Orderlies')">
+<span class="text-lg">🏥</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface">Metro Health Logistics — Ward 3</div>
+<div class="font-label-sm text-label-sm text-secondary">Healthcare Infrastructure & Biohazard</div>
+</div>
+</button>
+</div>
+</div>
+<!-- Compliance & Status Badges -->
+<div class="flex flex-wrap items-center gap-space-xs pt-3 xl:pt-0">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-on-primary-fixed animate-pulse"></span>
+          BOCW Act 1996 Compliance Active
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-primary text-[15px]">lock</span>
+          Escrow Pool: ₹ 4,20,000 Locked
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+          Shift Window: Day Shift (07:00 - 16:30)
+        </span>
+</div>
+</div>
+<!-- Quick Export Action -->
+<div class="flex items-center gap-space-xs w-full xl:w-auto justify-end">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm bg-primary-container text-on-primary-container font-label-md text-label-md rounded-lg shadow-sm hover:opacity-90 active:scale-95 transition-all" onclick="triggerExportNotice()">
+<span class="material-symbols-outlined text-[18px]">download</span>
+        Download Statutory Wage Ledger (PDF/CSV)
+      </button>
+</div>
+</div>
+<!-- Operational Telemetry Ribbon (Mercury-style 4 metrics) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Metric 1: Frontline Workforce -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Active Frontline Staff</span>
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface tracking-tight">142</span>
+<span class="font-label-md text-label-md text-secondary">Workers on-shift</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">my_location</span>
+          +8 checked-in via GPS geofence today
+        </span>
+</div>
+<!-- Subtle Visual Accent -->
+<div class="absolute right-0 bottom-0 translate-x-2 translate-y-2 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[90px]">engineering</span>
+</div>
+</div>
+<!-- Metric 2: Real-Time Accrued Daily Payroll -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Real-Time Accrued Payroll</span>
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface tracking-tight">₹ 1,18,450</span>
+<span class="font-label-sm text-label-sm text-secondary">of ₹ 4.2L Escrow</span>
+</div>
+<div class="text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+        Escrow auto-disbursement ready on digital clockout
+      </div>
+<!-- SVG Trend Sparkline -->
+<div class="mt-space-xs w-full">
+<svg class="w-full h-4 text-primary" fill="none" viewbox="0 0 100 12">
+<path d="M0 10 Q 20 8, 40 5 T 80 4 T 100 2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<!-- Metric 3: Statutory Compliance Index -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Statutory Compliance Index</span>
+<span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface tracking-tight">98.4%</span>
+<span class="font-label-sm text-label-sm text-secondary">Real-time BOCW score</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px] text-primary">gavel</span>
+          UN SDG 8 Aligned • Zero Wage Discrepancies
+        </span>
+</div>
+<div class="mt-space-xs w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 98.4%"></div>
+</div>
+</div>
+<!-- Metric 4: Algorithmic Fatigue Radar -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Algorithmic Fatigue Radar</span>
+<span class="material-symbols-outlined text-error text-[20px]">heart_broken</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-space-xs">
+<span class="font-headline-xl text-headline-xl text-error tracking-tight">2 Flags</span>
+<span class="font-label-sm text-label-sm text-secondary">Threshold >9.0h</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-space-xs py-1 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-bold animate-pulse">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+          Mandatory Rest Required
+        </span>
+</div>
+<div class="text-secondary font-label-sm text-label-sm mt-space-xs">
+        Autonomous lockout triggers at 12.0 hours.
+      </div>
+</div>
+</div>
+<!-- Main Grid: 70% Live Roster | 30% Hazard Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-lg">
+<!-- Left Column: Live Workforce Roster (70% = 8 cols on lg) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md">
+<!-- Roster Subheader & Filter Tabs -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-md gap-space-sm">
+<div>
+<div class="font-headline-md text-headline-md text-on-surface">Live Workforce Roster & Fatigue Radar</div>
+<div class="font-label-sm text-label-sm text-secondary">Real-time bioclock & geofence biometric verification under Indian Labor Code</div>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg" id="filterTabGroup">
+<button class="roster-filter-btn px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-bold bg-surface-container-lowest text-on-surface shadow-xs" onclick="filterRoster('all', this)">All On-Site (142)</button>
+<button class="roster-filter-btn px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-semibold text-secondary hover:text-on-surface" onclick="filterRoster('overtime', this)">Overtime (8)</button>
+<button class="roster-filter-btn px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-semibold text-secondary hover:text-on-surface" onclick="filterRoster('standdown', this)">Stand-down Risk (2)</button>
+<button class="roster-filter-btn px-space-sm py-1 rounded-lg font-label-sm text-label-sm font-semibold text-secondary hover:text-on-surface" onclick="filterRoster('completed', this)">Completed</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left" id="rosterTable">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md rounded-l-lg">Worker & Identity</th>
+<th class="py-space-sm px-space-sm">Trade / Sector</th>
+<th class="py-space-sm px-space-sm">Geofence Check-in</th>
+<th class="py-space-sm px-space-sm text-center">Hours</th>
+<th class="py-space-sm px-space-sm">Accrued Payout</th>
+<th class="py-space-sm px-space-sm">Fatigue Risk Level</th>
+<th class="py-space-sm px-space-md text-right rounded-r-lg">Supervisory Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1: Ramesh Patel -->
+<tr class="hover:bg-surface-container-low transition-colors roster-row" data-type="overtime">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">
+                      RP
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface leading-tight">Ramesh Patel</div>
+<div class="font-label-sm text-label-sm text-secondary font-mono">#W-8819 • Aadhaar Verified</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface block font-medium">Welder / Fabrication</span>
+<span class="font-label-sm text-label-sm text-secondary">Tier 2 Skilled</span>
+</td>
+<td class="py-space-md px-space-sm font-body-sm text-body-sm">
+<div class="text-on-surface">07:00 AM</div>
+<div class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px] text-primary">pin_drop</span> Site 4B Gate 2
+                  </div>
+</td>
+<td class="py-space-md px-space-sm text-center">
+<span class="font-headline-sm text-headline-sm text-on-surface">9.5</span>
+<span class="font-label-sm text-label-sm text-secondary block">OT: 1.5h</span>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">₹ 920.00</span>
+<span class="font-label-sm text-label-sm text-secondary block">1.5x OT applied</span>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="inline-flex items-center gap-1 px-space-xs py-1 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+                    Amber: Overtime 9.5h
+                  </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="px-space-sm py-1.5 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded-lg transition-colors" onclick="nudgeWorker('Ramesh Patel', this)">
+                    Nudge 30m Rest
+                  </button>
+</td>
+</tr>
+<!-- Row 2: Suresh Murthy -->
+<tr class="hover:bg-surface-container-low transition-colors roster-row" data-type="all">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">
+                      SM
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface leading-tight">Suresh Murthy</div>
+<div class="font-label-sm text-label-sm text-secondary font-mono">#W-9041 • Heavy Machine Cert</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface block font-medium">Tower Crane Operator</span>
+<span class="font-label-sm text-label-sm text-secondary">High Criticality</span>
+</td>
+<td class="py-space-md px-space-sm font-body-sm text-body-sm">
+<div class="text-on-surface">08:00 AM</div>
+<div class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px] text-primary">pin_drop</span> Site 4B Cab #1
+                  </div>
+</td>
+<td class="py-space-md px-space-sm text-center">
+<span class="font-headline-sm text-headline-sm text-on-surface">6.2</span>
+<span class="font-label-sm text-label-sm text-secondary block">Normal</span>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">₹ 496.00</span>
+<span class="font-label-sm text-label-sm text-secondary block">Standard Rate</span>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="inline-flex items-center gap-1 px-space-xs py-1 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                    Emerald: Safe Shift
+                  </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<span class="inline-flex items-center px-space-sm py-1.5 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] mr-1 text-primary">check_circle</span> Optimal
+                  </span>
+</td>
+</tr>
+<!-- Row 3: Anand Kumar (Critical Stand-down) -->
+<tr class="bg-error-container/20 hover:bg-error-container/30 transition-colors roster-row" data-type="standdown">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center font-label-sm text-label-sm font-bold">
+                      AK
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-error leading-tight font-bold">Anand Kumar</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant font-mono">#W-7102 • Manual Heavy</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface block font-medium">Concrete Finisher</span>
+<span class="font-label-sm text-label-sm text-error font-semibold">Extreme Physical Load</span>
+</td>
+<td class="py-space-md px-space-sm font-body-sm text-body-sm">
+<div class="text-on-surface">06:00 AM</div>
+<div class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px] text-error">pin_drop</span> Site 4B Slab 6
+                  </div>
+</td>
+<td class="py-space-md px-space-sm text-center">
+<span class="font-headline-sm text-headline-sm text-error font-bold">11.8</span>
+<span class="font-label-sm text-label-sm text-error block font-bold">OT: 3.8h</span>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">₹ 1,196.00</span>
+<span class="font-label-sm text-label-sm text-secondary block">Pending Lockout</span>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="inline-flex items-center gap-1 px-space-xs py-1 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-bold animate-pulse">
+<span class="material-symbols-outlined text-[14px]">report</span>
+                    Critical Stand-down >11h
+                  </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="px-space-sm py-1.5 bg-error text-on-error font-label-sm text-label-sm font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all shadow-sm" id="lockoutBtn" onclick="forceStandDown('Anand Kumar', this)">
+                    Force Stand-down
+                  </button>
+</td>
+</tr>
+<!-- Row 4: Priyanka Sen -->
+<tr class="hover:bg-surface-container-low transition-colors roster-row" data-type="overtime">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">
+                      PS
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface leading-tight">Priyanka Sen</div>
+<div class="font-label-sm text-label-sm text-secondary font-mono">#W-6632 • Field Safety Trainee</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface block font-medium">Safety Inspector Helper</span>
+<span class="font-label-sm text-label-sm text-secondary">General Shift</span>
+</td>
+<td class="py-space-md px-space-sm font-body-sm text-body-sm">
+<div class="text-on-surface">07:30 AM</div>
+<div class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px] text-primary">pin_drop</span> Site 4B Central
+                  </div>
+</td>
+<td class="py-space-md px-space-sm text-center">
+<span class="font-headline-sm text-headline-sm text-on-surface">8.0</span>
+<span class="font-label-sm text-label-sm text-secondary block">Max Standard</span>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">₹ 640.00</span>
+<span class="font-label-sm text-label-sm text-secondary block">Base Complete</span>
+</td>
+<td class="py-space-md px-space-sm">
+<span class="inline-flex items-center gap-1 px-space-xs py-1 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">notification_important</span>
+                    Shift Limit Reached
+                  </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="px-space-sm py-1.5 bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold rounded-lg hover:opacity-90 transition-all" onclick="clockoutReady('Priyanka Sen', this)">
+                    Clockout Ready
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Roster Table Footer / Pagination Metadata -->
+<div class="flex flex-col sm:flex-row items-center justify-between pt-space-md mt-space-md bg-surface-container-lowest gap-space-xs">
+<div class="font-label-sm text-label-sm text-secondary">
+            Showing 4 of 142 logged active frontline workers on Site 4B
+          </div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary">Aadhaar Bio-Sync: Active (Interval: 120s)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Anonymous Hazard Triage Queue (30% = 4 cols on lg) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col h-full">
+<!-- Whistle Header -->
+<div class="flex items-start justify-between pb-space-md mb-space-sm">
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[20px]">campaign</span>
+              Zero-Retaliation Hazard Feed
+            </div>
+<div class="font-label-sm text-label-sm text-secondary">Anonymous Frontline Voice Channel</div>
+</div>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px] text-primary">encrypted</span>
+            PII-Stripped
+          </span>
+</div>
+<!-- Whistle Feed Tickets -->
+<div class="flex flex-col gap-space-md flex-1">
+<!-- Ticket 1: Severe Fall Hazard -->
+<div class="bg-surface-container-low p-space-md rounded-xl transition-all hover:bg-surface-container">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">#WHISTLE-991A</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 18m ago
+              </span>
+</div>
+<div class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-bold mb-space-xs">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+              Severe Fall Hazard
+            </div>
+<p class="font-body-sm text-body-sm text-on-surface mb-space-sm leading-snug font-medium">
+              "Unstable scaffolding joint & rusted harness clips on 6th floor east wing."
+            </p>
+<div class="bg-surface-container-lowest p-space-xs rounded-lg mb-space-sm">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-secondary mb-1">
+<span>Peer Consensus Validation</span>
+<span class="font-bold text-on-surface">84 Workers (96%)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 96%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="inline-flex items-center gap-1 text-primary font-label-sm text-label-sm font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                Status: INSPECTING
+              </span>
+<button class="px-space-sm py-1 bg-primary text-on-primary hover:opacity-90 font-label-sm text-label-sm rounded-lg transition-all" id="mitigateBtn" onclick="markMitigated(this)">
+                Mark Mitigated
+              </button>
+</div>
+</div>
+<!-- Ticket 2: Hydration / Heat Alert -->
+<div class="bg-surface-container-low p-space-md rounded-xl transition-all hover:bg-surface-container">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">#WHISTLE-984C</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 1h ago
+              </span>
+</div>
+<div class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold mb-space-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary">water_drop</span>
+              Hydration / Welfare
+            </div>
+<p class="font-body-sm text-body-sm text-on-surface mb-space-sm leading-snug">
+              "Drinking water dispenser empty at Sector B batching plant under 38°C heat."
+            </p>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="inline-flex items-center gap-1 text-secondary font-label-sm text-label-sm font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[15px] text-primary">task_alt</span>
+                Status: RESOLVED
+              </span>
+<span class="font-label-sm text-label-sm text-secondary">Restocked at 11:30 AM</span>
+</div>
+</div>
+<!-- Ticket 3: Forklift Pedestrian Hazard -->
+<div class="bg-surface-container-low p-space-md rounded-xl transition-all hover:bg-surface-container">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm font-mono font-bold text-on-surface">#WHISTLE-979B</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">schedule</span> 3h ago
+              </span>
+</div>
+<div class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold mb-space-xs">
+<span class="material-symbols-outlined text-[14px] text-primary">forklift</span>
+              Machinery Hazard
+            </div>
+<p class="font-body-sm text-body-sm text-on-surface mb-space-sm leading-snug">
+              "Forklift operating in pedestrian walkway without reverse audio beeper."
+            </p>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="inline-flex items-center gap-1 text-on-surface font-label-sm text-label-sm font-semibold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                DISPATCHED TECH
+              </span>
+<span class="font-label-sm text-label-sm text-secondary">Audio Unit Replaced</span>
+</div>
+</div>
+</div>
+<!-- Hazard Queue Footer -->
+<div class="pt-space-md mt-space-md bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px] text-primary">security</span>
+            Zero Penalties for Whistleblowers Guaranteed
+          </div>
+<button class="font-label-sm text-label-sm text-primary font-bold hover:underline">View All 19 Logs</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Banner / BOCW Statutory Audit Summary -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px]">verified_user</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface">BOCW Act (1996) Real-Time Audit Attestation</span>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">Govt. Ledger Synced</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">
+          142 Workers active. 100% covered under statutory accidental disability escrow and automated medical coverage. Overtime rates pegged to mandatory 200% base threshold.
+        </p>
+</div>
+</div>
+<!-- Key Metrics in Summary & Actions -->
+<div class="flex flex-wrap items-center gap-space-md w-full lg:w-auto justify-end">
+<div class="bg-surface-container px-space-md py-space-sm rounded-lg text-right">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Verified Shift Hours</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">1,136.5 hrs logged</div>
+</div>
+<div class="bg-surface-container px-space-md py-space-sm rounded-lg text-right">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Statutory Cess Accrual</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">1.0% (₹ 1,184.50)</div>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm bg-on-surface text-surface-container-lowest font-label-md text-label-md rounded-lg hover:bg-inverse-surface transition-all" onclick="triggerAuditDownload()">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+        Generate Labor Inspector Dossier
+      </button>
+</div>
+</div>
+<!-- Micro-interaction Toast Notice -->
+<div class="fixed bottom-6 right-6 bg-surface-container-lowest text-on-surface p-space-md rounded-xl shadow-xl z-50 transform translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-space-sm max-w-md" id="hubToast">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0" id="toastIconContainer">
+<span class="material-symbols-outlined text-[20px]" id="toastIcon">check</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-bold" id="toastTitle">Notification</div>
+<div class="font-body-sm text-body-sm text-secondary" id="toastMessage">Action completed successfully.</div>
+</div>
+</div>
+</div>
+<script>
+  // Industry Switcher toggle
+  const dropdownBtn = document.getElementById('industryDropdownBtn');
+  const dropdownMenu = document.getElementById('industryDropdownMenu');
+
+  dropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', () => {
+    if (!dropdownMenu.classList.contains('hidden')) {
+      dropdownMenu.classList.add('hidden');
+    }
+  });
+
+  function switchSite(title, subtitle) {
+    document.getElementById('currentIndustryTitle').innerText = title;
+    document.getElementById('currentIndustrySubtitle').innerText = subtitle;
+    dropdownMenu.classList.add('hidden');
+    showToast('Operational Site Switched', 'Active context updated to ' + title, 'domain');
+  }
+
+  // Toast utility
+  let toastTimer;
+  function showToast(title, message, icon = 'check') {
+    const toast = document.getElementById('hubToast');
+    document.getElementById('toastTitle').innerText = title;
+    document.getElementById('toastMessage').innerText = message;
+    document.getElementById('toastIcon').innerText = icon;
+
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.add('translate-y-24', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 4000);
+  }
+
+  // Interactive functions
+  function triggerExportNotice() {
+    showToast('Export Initiated', 'Generating BOCW Form XIV statutory wage ledger (PDF & CSV)...', 'download');
+  }
+
+  function triggerAuditDownload() {
+    showToast('Inspector Dossier Ready', 'Cryptographically sealed audit report compiled for Labor Department submission.', 'verified');
+  }
+
+  function nudgeWorker(name, btn) {
+    btn.disabled = true;
+    btn.innerText = 'Nudge Dispatched';
+    btn.classList.add('opacity-60', 'cursor-not-allowed');
+    showToast('Fatigue Alert Sent', '30-minute rest alert relayed to ' + name + ' on field device.', 'send');
+  }
+
+  function forceStandDown(name, btn) {
+    btn.disabled = true;
+    btn.innerText = 'Lockout Triggered';
+    btn.classList.remove('bg-error');
+    btn.classList.add('bg-secondary', 'cursor-not-allowed');
+    showToast('Statutory Lockout Active', name + ' logged off. Gate RFID card temporarily revoked for rest window.', 'lock_person');
+  }
+
+  function clockoutReady(name, btn) {
+    btn.disabled = true;
+    btn.innerText = 'Verified';
+    btn.classList.add('opacity-60', 'cursor-not-allowed');
+    showToast('Ready for Clockout', 'Shift limit finalized. Payout queued in escrow disbursement.', 'task_alt');
+  }
+
+  function markMitigated(btn) {
+    btn.disabled = true;
+    btn.innerText = 'Mitigated';
+    btn.classList.add('opacity-50', 'cursor-not-allowed');
+    showToast('Hazard Mitigated', 'Ticket #WHISTLE-991A status moved to RESOLVED with supervisor sign-off.', 'check_circle');
+  }
+
+  // Roster Filter tabs
+  function filterRoster(type, btn) {
+    const buttons = document.querySelectorAll('.roster-filter-btn');
+    buttons.forEach(b => {
+      b.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs', 'font-bold');
+      b.classList.add('text-secondary', 'font-semibold');
+    });
+    btn.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs', 'font-bold');
+    btn.classList.remove('text-secondary', 'font-semibold');
+
+    const rows = document.querySelectorAll('.roster-row');
+    rows.forEach(row => {
+      if (type === 'all') {
+        row.style.display = '';
+      } else {
+        const rowType = row.getAttribute('data-type');
+        if (rowType === type) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      }
+    });
+  }
+</script></main></div></body></html>

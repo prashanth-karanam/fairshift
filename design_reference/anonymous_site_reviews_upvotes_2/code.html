@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f8fafc;color:#0f172a;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#facc15", "on-primary-container": "#0f172a" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-2xs": "0.125rem", "space-lg": "1rem", "margin": "2rem", "space-2xl": "2rem", "space-md": "0.75rem", "margin-mobile": "1rem", "space-xs": "0.25rem", "space-3xl": "3rem", "gutter-mobile": "0.75rem", "space-xl": "1.5rem", "space-sm": "0.5rem", "gutter": "1rem" }, "fontFamily": { "headline-md": ["Inter"], "display-lg-mobile": ["Inter"], "display-lg": ["Inter"], "body-sm": ["JetBrains Mono"], "headline-lg-mobile": ["Inter"], "headline-lg": ["Inter"], "code-inline": ["JetBrains Mono"], "body-lg": ["JetBrains Mono"], "body-md": ["JetBrains Mono"], "label-caps": ["JetBrains Mono"], "data-metric": ["JetBrains Mono"], "headline-sm": ["Inter"] }, "fontSize": { "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "body-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "code-inline": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "500" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "label-caps": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "data-metric": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-slate-50 font-body-md text-slate-900 flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-yellow-400 flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-slate-950 font-bold text-[20px]">bolt</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-slate-900 font-bold leading-none">FairShift</span><span class="font-label-caps text-label-caps text-slate-500 uppercase mt-space-2xs">Reviews</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-2xs px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200"><span class="material-symbols-outlined text-emerald-700 text-[16px]">near_me</span><span class="font-label-caps text-label-caps text-emerald-800 font-bold uppercase">GPS OK</span></div><div class="w-8 h-8 rounded-full bg-yellow-400 border border-yellow-500 flex items-center justify-center text-slate-900 font-bold"><span class="material-symbols-outlined text-slate-950 text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-slate-50 min-h-screen"><div class="flex flex-col w-full">
+<div class="px-margin-mobile pt-space-md pb-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs bg-yellow-100/80 border border-yellow-300 px-space-sm py-space-2xs rounded-lg self-start">
+<span class="material-symbols-outlined text-yellow-800 text-[16px]">verified_user</span>
+<span class="font-label-caps text-label-caps uppercase text-yellow-950 font-bold tracking-wider">Zero Retaliation Protocol Active</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-slate-950 tracking-tight">Community Site Intel &amp; Reviews</h1>
+<p class="font-body-md text-body-md text-slate-600">100% Anonymous worker reviews protected against contractor retaliation. Verified by peer votes.</p>
+</div>
+<div class="mt-space-xs">
+<button class="w-full flex items-center justify-center gap-space-sm bg-yellow-400 hover:bg-yellow-300 text-slate-950 border-2 border-yellow-500 py-space-md px-space-lg rounded-xl font-label-caps text-label-caps tracking-widest uppercase font-extrabold shadow-sm active:translate-y-0.5 transition-transform" id="btnOpenFeedback">
+<span class="material-symbols-outlined text-[18px] font-bold">add_circle</span>
+<span>+ Give Anonymous Feedback</span>
+</button>
+</div>
+<!-- Filter chips scrollable row -->
+<div class="flex items-center gap-space-xs overflow-x-auto pt-space-xs pb-space-2xs scrollbar-none -mx-margin-mobile px-margin-mobile">
+<button class="filter-chip whitespace-nowrap px-space-md py-space-xs rounded-lg bg-yellow-400 text-slate-950 border border-yellow-500 font-label-caps text-label-caps uppercase font-bold shadow-xs" data-filter="all">All Sites</button>
+<button class="filter-chip whitespace-nowrap px-space-md py-space-xs rounded-lg bg-white border border-slate-200 text-slate-600 font-label-caps text-label-caps uppercase font-semibold hover:bg-slate-100" data-filter="voted">Most Voted</button>
+<button class="filter-chip whitespace-nowrap px-space-md py-space-xs rounded-lg bg-white border border-slate-200 text-slate-600 font-label-caps text-label-caps uppercase font-semibold hover:bg-slate-100" data-filter="pay">Fair Pay Sites</button>
+<button class="filter-chip whitespace-nowrap px-space-md py-space-xs rounded-lg bg-white border border-slate-200 text-slate-600 font-label-caps text-label-caps uppercase font-semibold hover:bg-slate-100" data-filter="safety">Safety Warnings</button>
+</div>
+</div>
+<!-- Trust & Cryptographic Verification Strip -->
+<div class="px-margin-mobile mb-space-md">
+<div class="bg-white border border-slate-200 rounded-xl p-space-sm flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-emerald-600 text-[20px]">shield_lock</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-slate-900 font-bold">ZK-Shield Identity Obfuscation</span>
+<span class="font-body-sm text-body-sm text-slate-500">Contractors cannot inspect phone or worker ID</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-emerald-800 uppercase bg-emerald-100 border border-emerald-300 px-space-xs py-space-2xs rounded font-bold">P2P Peer Validated</span>
+</div>
+</div>
+<!-- Review Cards Feed -->
+<div class="px-margin-mobile flex flex-col gap-space-lg pb-space-2xl" id="reviewsContainer">
+<!-- Card 1: Critical Warning -->
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm flex flex-col" data-category="safety">
+<div class="p-space-md flex flex-col gap-space-sm">
+<!-- Header Info -->
+<div class="flex justify-between items-start gap-space-xs">
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-bold text-slate-950 truncate">Apex Infra - Site 4B (Navi Mumbai)</span>
+<div class="flex items-center gap-space-xs mt-space-2xs text-slate-500 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[14px]">event</span>
+<span>Shift: Nov 14 (3 days ago)</span>
+</div>
+</div>
+<div class="bg-red-50 text-red-700 border border-red-200 px-space-xs py-space-2xs rounded font-label-caps text-label-caps uppercase font-bold shrink-0 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-red-600">warning</span>
+<span>Safety Hazard</span>
+</div>
+</div>
+<!-- Anonymous Worker Credential Pill & Star Badges -->
+<div class="flex flex-wrap items-center gap-space-xs py-space-2xs">
+<span class="bg-slate-100 border border-slate-200 text-slate-800 px-space-xs py-space-2xs rounded font-label-caps text-label-caps uppercase flex items-center gap-space-2xs font-semibold">
+<span class="material-symbols-outlined text-[14px] text-slate-700">lock</span>
+            Verified Welder #W-8819
+          </span>
+<div class="flex items-center gap-1 bg-amber-50 border border-amber-200 px-space-xs py-space-2xs rounded font-semibold text-amber-900">
+<span class="material-symbols-outlined text-amber-500 text-[14px]">star</span>
+<span class="font-body-sm text-body-sm">2.5/5</span>
+</div>
+</div>
+<!-- Rating Sub-breakdown bars -->
+<div class="grid grid-cols-2 gap-space-xs bg-slate-50 border border-slate-200 p-space-xs rounded-lg">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-slate-600 font-label-caps text-label-caps">
+<span>Safety</span>
+<span class="text-red-600 font-bold">2.0 ★</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-red-500 h-full" style="width: 40%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-slate-600 font-label-caps text-label-caps">
+<span>Pay Timeliness</span>
+<span class="text-emerald-700 font-bold">4.0 ★</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+<!-- Review Text -->
+<p class="font-body-md text-body-md text-slate-800 mt-space-2xs">
+          Supervisor delayed water break during afternoon heat. Also harness clips on 6th floor scaffold were rusted. Pay was credited on time though (₹920 within 2 hours of clockout).
+        </p>
+<!-- Verification Truth Meter Bar -->
+<div class="bg-amber-50/80 border border-amber-200 p-space-sm rounded-lg flex items-center justify-between gap-space-sm mt-space-2xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="text-[16px]">🔥</span>
+<span class="font-body-sm text-body-sm font-bold text-amber-950 truncate">84 Workers Verified This is True</span>
+</div>
+<span class="font-label-caps text-label-caps text-emerald-800 shrink-0 bg-emerald-100 border border-emerald-300 px-space-xs py-1 rounded font-bold">96% Peer Confidence</span>
+</div>
+<!-- Action / Truth Vote Section -->
+<div class="flex items-center justify-between gap-space-xs pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="vote-true-btn bg-yellow-400 hover:bg-yellow-300 text-slate-950 border border-yellow-500 px-space-sm py-space-xs rounded-lg font-label-caps text-label-caps font-bold uppercase flex items-center gap-space-2xs shadow-xs transition-transform active:scale-95" data-count="84">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+<span>True (<span class="count-target">84</span>)</span>
+</button>
+<button class="vote-false-btn bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 px-space-sm py-space-xs rounded-lg font-label-caps text-label-caps font-semibold uppercase flex items-center gap-space-2xs transition-transform active:scale-95" data-count="3">
+<span class="material-symbols-outlined text-[16px]">thumb_down</span>
+<span>False (3)</span>
+</button>
+</div>
+<button class="flex items-center gap-space-2xs text-slate-600 hover:text-slate-900 font-label-caps text-label-caps uppercase px-space-xs py-space-xs rounded-lg bg-slate-100 border border-slate-200">
+<span class="material-symbols-outlined text-[16px]">chat_bubble_outline</span>
+<span>12</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Positive Verified Contractor -->
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm flex flex-col" data-category="pay">
+<div class="p-space-md flex flex-col gap-space-sm">
+<!-- Header Info -->
+<div class="flex justify-between items-start gap-space-xs">
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-bold text-slate-950 truncate">SRM Logistics Hub Turbhe</span>
+<div class="flex items-center gap-space-xs mt-space-2xs text-slate-500 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[14px]">event</span>
+<span>Shift: Yesterday</span>
+</div>
+</div>
+<div class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-space-xs py-space-2xs rounded font-label-caps text-label-caps uppercase font-bold shrink-0 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">verified</span>
+<span>Exemplary Site</span>
+</div>
+</div>
+<!-- Anonymous Worker Credential Pill & Star Badges -->
+<div class="flex flex-wrap items-center gap-space-xs py-space-2xs">
+<span class="bg-slate-100 border border-slate-200 text-slate-800 px-space-xs py-space-2xs rounded font-label-caps text-label-caps uppercase flex items-center gap-space-2xs font-semibold">
+<span class="material-symbols-outlined text-[14px] text-slate-700">lock</span>
+            Verified Loader #L-4021
+          </span>
+<div class="flex items-center gap-1 bg-amber-50 border border-amber-200 px-space-xs py-space-2xs rounded font-semibold text-amber-900">
+<span class="material-symbols-outlined text-amber-500 text-[14px]">star</span>
+<span class="font-body-sm text-body-sm">4.8/5</span>
+</div>
+</div>
+<!-- Rating Sub-breakdown bars -->
+<div class="grid grid-cols-2 gap-space-xs bg-slate-50 border border-slate-200 p-space-xs rounded-lg">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-slate-600 font-label-caps text-label-caps">
+<span>Facilities</span>
+<span class="text-emerald-700 font-bold">5.0 ★</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full" style="width: 100%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-slate-600 font-label-caps text-label-caps">
+<span>Pay Guarantee</span>
+<span class="text-emerald-700 font-bold">5.0 ★</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+<!-- Review Text -->
+<p class="font-body-md text-body-md text-slate-800 mt-space-2xs">
+          Free hot tea and clean washroom available. Supervisor Ravi sir is very respectful. Overtime was counted strictly by app, got extra ₹180 in cash upon clockout.
+        </p>
+<!-- Verification Truth Meter Bar -->
+<div class="bg-emerald-50/80 border border-emerald-200 p-space-sm rounded-lg flex items-center justify-between gap-space-sm mt-space-2xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="text-[16px]">✅</span>
+<span class="font-body-sm text-body-sm font-bold text-emerald-900 truncate">116 Workers Agreed (100% True)</span>
+</div>
+<span class="font-label-caps text-label-caps text-emerald-800 shrink-0 bg-emerald-100 border border-emerald-300 px-space-xs py-1 rounded font-bold">Consensus High</span>
+</div>
+<!-- Action / Truth Vote Section -->
+<div class="flex items-center justify-between gap-space-xs pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="vote-true-btn bg-slate-100 hover:bg-yellow-400 text-slate-700 border border-slate-300 px-space-sm py-space-xs rounded-lg font-label-caps text-label-caps font-bold uppercase flex items-center gap-space-2xs transition-transform active:scale-95" data-count="116">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+<span>True (<span class="count-target">116</span>)</span>
+</button>
+<button class="vote-false-btn bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 px-space-sm py-space-xs rounded-lg font-label-caps text-label-caps font-semibold uppercase flex items-center gap-space-2xs transition-transform active:scale-95" data-count="1">
+<span class="material-symbols-outlined text-[16px]">thumb_down</span>
+<span>False (1)</span>
+</button>
+</div>
+<button class="flex items-center gap-space-2xs text-slate-600 hover:text-slate-900 font-label-caps text-label-caps uppercase px-space-xs py-space-xs rounded-lg bg-slate-100 border border-slate-200">
+<span class="material-symbols-outlined text-[16px]">chat_bubble_outline</span>
+<span>8</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Standard Field Review -->
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm flex flex-col" data-category="voted">
+<div class="p-space-md flex flex-col gap-space-sm">
+<!-- Header Info -->
+<div class="flex justify-between items-start gap-space-xs">
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-bold text-slate-950 truncate">Metro Pier #12 Sanpada</span>
+<div class="flex items-center gap-space-xs mt-space-2xs text-slate-500 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[14px]">event</span>
+<span>Shift: 5 days ago</span>
+</div>
+</div>
+<div class="bg-slate-100 text-slate-700 border border-slate-200 px-space-xs py-space-2xs rounded font-label-caps text-label-caps uppercase font-bold shrink-0 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-slate-600">shield</span>
+<span>Standard</span>
+</div>
+</div>
+<!-- Anonymous Worker Credential Pill & Star Badges -->
+<div class="flex flex-wrap items-center gap-space-xs py-space-2xs">
+<span class="bg-slate-100 border border-slate-200 text-slate-800 px-space-xs py-space-2xs rounded font-label-caps text-label-caps uppercase flex items-center gap-space-2xs font-semibold">
+<span class="material-symbols-outlined text-[14px] text-slate-700">lock</span>
+            Verified Rigger #R-0992
+          </span>
+<div class="flex items-center gap-1 bg-amber-50 border border-amber-200 px-space-xs py-space-2xs rounded font-semibold text-amber-900">
+<span class="material-symbols-outlined text-amber-500 text-[14px]">star</span>
+<span class="font-body-sm text-body-sm">4.5/5</span>
+</div>
+</div>
+<!-- Review Text -->
+<p class="font-body-md text-body-md text-slate-800 mt-space-2xs">
+          Heavy work but safety gear is brand new. Strict 1-hour lunch break.
+        </p>
+<!-- Action / Truth Vote Section -->
+<div class="flex items-center justify-between gap-space-xs pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="vote-true-btn bg-slate-100 hover:bg-yellow-400 text-slate-700 border border-slate-300 px-space-sm py-space-xs rounded-lg font-label-caps text-label-caps font-bold uppercase flex items-center gap-space-2xs transition-transform active:scale-95" data-count="42">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+<span>True (<span class="count-target">42</span>)</span>
+</button>
+<button class="vote-false-btn bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 px-space-sm py-space-xs rounded-lg font-label-caps text-label-caps font-semibold uppercase flex items-center gap-space-2xs transition-transform active:scale-95" data-count="0">
+<span class="material-symbols-outlined text-[16px]">thumb_down</span>
+<span>False (0)</span>
+</button>
+</div>
+<button class="flex items-center gap-space-2xs text-slate-600 hover:text-slate-900 font-label-caps text-label-caps uppercase px-space-xs py-space-xs rounded-lg bg-slate-100 border border-slate-200">
+<span class="material-symbols-outlined text-[16px]">chat_bubble_outline</span>
+<span>3</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Slide-Up Feedback Modal Sheet -->
+<div class="fixed inset-0 z-50 bg-slate-950/40 backdrop-blur-sm flex items-end justify-center hidden" id="feedbackModal">
+<div class="w-full bg-white rounded-t-2xl p-margin-mobile flex flex-col gap-space-md shadow-2xl border-t border-slate-200 max-h-[751px] overflow-y-auto">
+<div class="w-12 h-1.5 bg-slate-300 rounded-full mx-auto self-center mb-space-2xs"></div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-slate-950">Anonymous Site Audit</span>
+<span class="font-body-sm text-body-sm text-emerald-700 font-semibold">Zero-Knowledge ID Hash applied</span>
+</div>
+<button class="p-space-2xs text-slate-400 hover:text-slate-800" id="btnCloseModal">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-caps text-label-caps uppercase text-slate-600 font-bold">Select Workplace Shift</label>
+<select class="bg-slate-50 border border-slate-300 text-slate-900 p-space-sm rounded-lg font-body-md text-body-md outline-none focus:border-yellow-500">
+<option>Metro Pier #12 Sanpada (Completed Today)</option>
+<option>Apex Infra - Site 4B (Completed Nov 14)</option>
+<option>SRM Logistics Turbhe (Completed Nov 12)</option>
+</select>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-caps text-label-caps uppercase text-slate-600 font-bold">Safety &amp; Gear Condition</label>
+<div class="flex gap-space-xs">
+<button class="rating-pill flex-1 py-space-2xs bg-slate-100 border border-slate-200 text-slate-700 rounded font-label-caps text-label-caps uppercase text-center active:bg-yellow-400 active:text-slate-950" type="button">Poor</button>
+<button class="rating-pill flex-1 py-space-2xs bg-slate-100 border border-slate-200 text-slate-700 rounded font-label-caps text-label-caps uppercase text-center active:bg-yellow-400 active:text-slate-950" type="button">Fair</button>
+<button class="rating-pill flex-1 py-space-2xs bg-yellow-400 border border-yellow-500 text-slate-950 font-bold rounded font-label-caps text-label-caps uppercase text-center shadow-xs" type="button">Good</button>
+<button class="rating-pill flex-1 py-space-2xs bg-slate-100 border border-slate-200 text-slate-700 rounded font-label-caps text-label-caps uppercase text-center active:bg-yellow-400 active:text-slate-950" type="button">Excellent</button>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-caps text-label-caps uppercase text-slate-600 font-bold">Worker Intel &amp; Notes</label>
+<textarea class="bg-slate-50 border border-slate-300 text-slate-900 p-space-sm rounded-lg font-body-md text-body-md outline-none placeholder:text-slate-400 focus:border-yellow-500" placeholder="Describe drinking water, washrooms, supervisor tone, overtime settlement..." rows="3"></textarea>
+</div>
+<div class="bg-yellow-50 border border-yellow-200 p-space-sm rounded-lg flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-yellow-700 text-[20px]">fingerprint</span>
+<span class="font-body-sm text-body-sm text-slate-700">Your worker handle will display randomly as <strong class="text-slate-950 font-code-inline text-code-inline">Verified Rigger #R-****</strong>. No phone numbers are stored.</span>
+</div>
+<button class="w-full py-space-md bg-yellow-400 hover:bg-yellow-300 text-slate-950 border-2 border-yellow-500 rounded-xl font-label-caps text-label-caps tracking-widest uppercase font-extrabold shadow-sm" id="btnSubmitFeedback">
+        Post Anonymous Truth Report
+      </button>
+</div>
+</div>
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white border border-slate-800 px-space-lg py-space-sm rounded-xl shadow-2xl flex items-center gap-space-xs z-50 pointer-events-none opacity-0 transition-opacity duration-300" id="toastNotification">
+<span class="material-symbols-outlined text-yellow-400 text-[20px]">task_alt</span>
+<span class="font-body-sm text-body-sm font-semibold" id="toastMessage">Peer verification logged on chain!</span>
+</div>
+</div>
+<script>
+  (function() {
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('#reviewsContainer > div');
+    const modal = document.getElementById('feedbackModal');
+    const openBtn = document.getElementById('btnOpenFeedback');
+    const closeBtn = document.getElementById('btnCloseModal');
+    const submitBtn = document.getElementById('btnSubmitFeedback');
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMessage');
+
+    function showToast(message) {
+      if (!toast) return;
+      toastMsg.textContent = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2400);
+    }
+
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => {
+          c.classList.remove('bg-yellow-400', 'text-slate-950', 'border-yellow-500');
+          c.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+        });
+        chip.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+        chip.classList.add('bg-yellow-400', 'text-slate-950', 'border-yellow-500');
+
+        const filter = chip.getAttribute('data-filter');
+        cards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'flex';
+          } else {
+            const cat = card.getAttribute('data-category');
+            if (cat === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.vote-true-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const countSpan = this.querySelector('.count-target');
+        let currentCount = parseInt(countSpan.textContent, 10);
+        const isActive = this.classList.contains('bg-yellow-400');
+
+        if (isActive) {
+          this.classList.remove('bg-yellow-400', 'text-slate-950', 'border-yellow-500');
+          this.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-300');
+          countSpan.textContent = currentCount - 1;
+          showToast('Peer verification retracted');
+        } else {
+          this.classList.add('bg-yellow-400', 'text-slate-950', 'border-yellow-500');
+          this.classList.remove('bg-slate-100', 'text-slate-700', 'border-slate-300');
+          countSpan.textContent = currentCount + 1;
+          showToast('Truth verified! Reputation score updated.');
+        }
+      });
+    });
+
+    document.querySelectorAll('.vote-false-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const isActive = this.classList.contains('bg-red-100');
+        if (isActive) {
+          this.classList.remove('bg-red-100', 'text-red-800', 'border-red-300');
+          this.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-300');
+        } else {
+          this.classList.add('bg-red-100', 'text-red-800', 'border-red-300');
+          this.classList.remove('bg-slate-100', 'text-slate-700', 'border-slate-300');
+          showToast('Flagged for community audit review.');
+        }
+      });
+    });
+
+    if (openBtn && modal) {
+      openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+    }
+    if (closeBtn && modal) {
+      closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+    }
+    if (submitBtn && modal) {
+      submitBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        showToast('Anonymous audit published with Zero-Knowledge verification!');
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-white/95 backdrop-blur-xl border-t border-slate-200 shadow-md"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-2xs text-slate-500 transition-colors hover:text-slate-900" data-path="jobs" href="#"><span class="material-symbols-outlined text-[22px]">work_outline</span><span class="font-label-caps text-label-caps uppercase font-semibold">Jobs</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-2xs text-slate-500 transition-colors hover:text-slate-900" data-path="active-shift" href="#"><span class="material-symbols-outlined text-[22px]">timer</span><span class="font-label-caps text-label-caps uppercase font-semibold">Shift</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-2xs transition-colors text-slate-950 font-bold" data-path="reviews" href="#"><div class="w-8 h-8 rounded-lg bg-yellow-400 flex items-center justify-center border border-yellow-500 shadow-xs"><span class="material-symbols-outlined text-[20px] text-slate-950">rate_review</span></div><span class="font-label-caps text-label-caps uppercase text-slate-950 font-extrabold text-[9px] tracking-wide">Reviews</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-2xs text-slate-500 transition-colors hover:text-slate-900" data-path="my-profile" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-caps text-label-caps uppercase font-semibold">Profile</span></a></div></nav></body></html>

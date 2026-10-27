@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta content="mobile_tab" name="shell-type"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      main > :first-child {
+        margin-top: 0 !important;
+      }
+      main > :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 font-['JetBrains_Mono'] text-slate-900 flex flex-col min-h-screen">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 w-full z-50 pt-safe bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+<div class="h-16 px-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-yellow-400 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-slate-900 text-[20px] font-bold">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-['Inter'] text-[16px] uppercase tracking-tight text-slate-900 font-extrabold leading-none">FairShift</span>
+<span class="font-['JetBrains_Mono'] text-[10px] text-slate-500 uppercase mt-0.5 tracking-wider font-semibold">My Profile</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200">
+<span class="material-symbols-outlined text-emerald-600 text-[15px]">near_me</span>
+<span class="font-['JetBrains_Mono'] text-[10px] text-emerald-700 font-bold uppercase tracking-wider">GPS OK</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">
+<span class="material-symbols-outlined text-[19px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Scroll Area -->
+<main class="flex flex-col relative w-full pt-16 pb-24 bg-slate-50 min-h-screen">
+<div class="flex flex-col w-full pb-8">
+<!-- Profile & Badging Container -->
+<div class="px-4 pt-4 pb-2 flex flex-col gap-3.5">
+<!-- Worker Profile Hero Card -->
+<div class="relative overflow-hidden rounded-xl bg-white border border-slate-200 p-4 shadow-sm">
+<div class="flex items-start gap-3.5 relative z-10">
+<div class="relative flex-shrink-0">
+<div class="w-16 h-16 rounded-xl bg-slate-100 overflow-hidden border border-slate-200 flex items-center justify-center shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Ramesh Patel, an Indian male industrial welder in his late 30s wearing a protective safety helmet, high-visibility vest, and work goggles slung around his neck. Warm industrial backlight with workshop machinery in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEIVRXvrWaqhfhmsuxkz2r9SeL5PdEGNJrrfHh_0E74vzcXmi3AT9djBVxWH8osywlTWtFNXTZXL_YhSrklYB7NvxLq7OMEpskM-Jzl1TsEWGhtTYvVG03uxS1vjkFMnPN3QdfRHueFdWDZOQBu9V5j_HqKHFlFUr2BicgCe68Pr6Ga5vDtPVisdTvC8RhSYvYGTtteh_BvqTj6vythGMN8hphORdgLz_HFrhMVLscaefD12E4dGr2lQ"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center shadow-md ring-2 ring-white">
+<span class="material-symbols-outlined text-white text-[12px] font-bold">verified</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h1 class="font-['Inter'] text-[20px] text-slate-900 font-bold tracking-tight truncate leading-tight">Ramesh Patel</h1>
+<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded text-[10px] font-bold tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[11px]">check_circle</span> VERIFIED
+                </span>
+</div>
+<p class="font-['JetBrains_Mono'] text-[13px] text-slate-600 truncate mt-0.5">Welder &amp; General Fabricator</p>
+<div class="flex items-center gap-2 mt-1.5 text-slate-500 flex-wrap">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-amber-600">location_on</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-600">Navi Mumbai Hub</span>
+</div>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">phone_android</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-600">+91 98••• 4120</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Badge Award Ribbon -->
+<div class="mt-3.5 pt-2.5 flex items-center gap-2.5 bg-yellow-50 border-t border-yellow-200/80 -mx-4 -mb-4 px-4 py-2.5">
+<div class="w-6 h-6 rounded-md bg-yellow-400 flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-slate-950 text-[16px]">military_tech</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-['JetBrains_Mono'] text-[10px] text-amber-900 uppercase font-bold tracking-wider">Top 5% Worker Status</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-700 truncate">Preferred Site Access &amp; Instant Hire Enabled</span>
+</div>
+</div>
+</div>
+<!-- Quick Stats Metric Strip -->
+<div class="grid grid-cols-3 gap-2.5">
+<div class="bg-white border border-slate-200 p-3 rounded-xl flex flex-col items-center justify-center text-center shadow-sm">
+<span class="font-['JetBrains_Mono'] text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Completed</span>
+<span class="font-['JetBrains_Mono'] text-[26px] text-slate-900 font-extrabold leading-tight mt-1">38</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-500">Shifts</span>
+</div>
+<div class="bg-white border border-slate-200 p-3 rounded-xl flex flex-col items-center justify-center text-center shadow-sm">
+<span class="font-['JetBrains_Mono'] text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Accrued</span>
+<span class="font-['Inter'] text-[18px] text-emerald-700 font-bold leading-tight mt-1">₹34.2K</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-500">Earnings</span>
+</div>
+<div class="bg-white border border-slate-200 p-3 rounded-xl flex flex-col items-center justify-center text-center shadow-sm">
+<span class="font-['JetBrains_Mono'] text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Impact</span>
+<span class="font-['JetBrains_Mono'] text-[26px] text-sky-700 font-extrabold leading-tight mt-1">14</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-500">Reviews</span>
+</div>
+</div>
+<!-- Dual Reputation Engine Cards -->
+<div class="flex flex-col gap-3.5 mt-1">
+<!-- Box 1: Worker Operational Score (Admin Evaluation) -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-amber-600 text-[18px]">engineering</span>
+<span class="font-['JetBrains_Mono'] text-[10px] text-slate-600 uppercase font-bold tracking-wider">Operational Score</span>
+</div>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-600 bg-slate-100 px-2 py-0.5 rounded font-medium">38 Shifts</span>
+</div>
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-['Inter'] text-[30px] font-extrabold text-slate-900 leading-none">4.9</span>
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</div>
+<span class="font-['JetBrains_Mono'] text-[12px] text-emerald-700 flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[15px]">trending_up</span> Superior
+              </span>
+</div>
+<!-- Rating Metric Breakdown Bars -->
+<div class="flex flex-col gap-2 pt-1 border-t border-slate-100">
+<!-- Punctuality -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-['JetBrains_Mono'] text-[12px]">
+<span class="text-slate-700">Punctuality</span>
+<span class="text-slate-900 font-bold">5.0 ★</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200/50">
+<div class="bg-yellow-400 h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Safety Compliance -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-['JetBrains_Mono'] text-[12px]">
+<span class="text-slate-700">Safety Compliance</span>
+<span class="text-slate-900 font-bold">4.9 ★</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200/50">
+<div class="bg-emerald-500 h-full rounded-full" style="width: 98%;"></div>
+</div>
+</div>
+<!-- Skill Delivery -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-['JetBrains_Mono'] text-[12px]">
+<span class="text-slate-700">Skill Delivery</span>
+<span class="text-slate-900 font-bold">4.8 ★</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-slate-200/50">
+<div class="bg-sky-500 h-full rounded-full" style="width: 96%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Box 2: Contractor Feedback Credibility Score (Peer Worker Trust) -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col gap-2.5 relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">verified_user</span>
+<span class="font-['JetBrains_Mono'] text-[10px] text-slate-600 uppercase font-bold tracking-wider">Site Review Credibility</span>
+</div>
+<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-['JetBrains_Mono'] px-2 py-0.5 rounded uppercase font-bold">Trusted Voice</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1.5">
+<span class="font-['Inter'] text-[30px] font-extrabold text-emerald-700 leading-none">98%</span>
+<span class="font-['Inter'] text-[16px] text-slate-900 font-bold">Truth Score</span>
+</div>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-600 mt-1.5">
+                  Validated by <strong class="text-slate-900 font-semibold">340+ peer workers</strong> across industrial zones
+                </span>
+</div>
+<div class="w-14 h-14 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center p-1 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-slate-200" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-emerald-500" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="98, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+</div>
+</div>
+<div class="bg-slate-50 border border-slate-200/70 p-2.5 rounded-lg flex items-center justify-between mt-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-600 text-[18px]">lock</span>
+<span class="font-['JetBrains_Mono'] text-[12px] text-slate-700 font-medium">14 Anonymous Insights Published</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Interactive Callout: Pending Review Action (Vibrant Industrial Yellow) -->
+<div class="relative overflow-hidden bg-yellow-400 text-slate-950 border border-yellow-500 rounded-xl p-4 shadow-md flex flex-col gap-2.5">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] font-extrabold text-slate-950">rate_review</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-bold tracking-wider text-slate-950">Action Required • Site 4B</span>
+</div>
+<span class="bg-slate-950 text-yellow-400 text-[10px] font-['JetBrains_Mono'] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+              +50 Reputation XP
+            </span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-['Inter'] text-[17px] font-bold text-slate-950 leading-snug">Share Anonymous Feedback for Site 4B</h3>
+<p class="font-['JetBrains_Mono'] text-[12px] text-slate-900 mt-1 leading-relaxed">
+              Help protect your fellow trade workers. Report site hydration, PPE supply, and safety harness condition.
+            </p>
+</div>
+<button class="w-full mt-1 bg-slate-950 hover:bg-slate-900 text-white py-2.5 px-4 rounded-lg font-['Inter'] text-[14px] font-bold flex items-center justify-center gap-2 active:translate-y-0.5 transition-transform shadow-sm" id="btn-open-review">
+<span>Complete 30-Sec Audit</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Recent Shift & Admin Feedback Feed -->
+<div class="flex flex-col gap-2.5 mt-1">
+<div class="flex items-center justify-between px-1">
+<span class="font-['JetBrains_Mono'] text-[10px] text-slate-500 uppercase font-bold tracking-wider">Latest Shift Performance</span>
+<a class="font-['JetBrains_Mono'] text-[12px] text-amber-700 font-semibold hover:underline" href="#">Shift Log (38)</a>
+</div>
+<!-- Feed Card -->
+<div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col gap-2.5">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-lg bg-yellow-100 text-amber-800 flex items-center justify-center border border-yellow-200">
+<span class="material-symbols-outlined text-[22px]">factory</span>
+</div>
+<div class="flex flex-col">
+<span class="font-['Inter'] text-[14px] text-slate-900 font-bold leading-tight">Shift #42 • Site 4B Metalworks</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-500 mt-0.5">Navi Mumbai • Yesterday, 08:00 - 16:30</span>
+</div>
+</div>
+<span class="bg-amber-100 text-amber-900 font-['Inter'] text-[13px] font-bold px-2 py-0.5 rounded border border-amber-200">5.0 ★</span>
+</div>
+<!-- Admin Quote Box -->
+<div class="bg-slate-50 border border-slate-200/80 p-3 rounded-lg flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-slate-500">person</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-800 font-semibold">Admin Shankar (Site Lead)</span>
+</div>
+<span class="font-['JetBrains_Mono'] text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded font-bold">PAYOUT CLEARED</span>
+</div>
+<p class="font-['JetBrains_Mono'] text-[12px] text-slate-700 italic leading-relaxed">
+                “Excellent safety adherence and completed welding 30 mins early. Verified high-grade joint seams.”
+              </p>
+</div>
+</div>
+</div>
+<!-- Worker Settings & Compliance Tools -->
+<div class="flex flex-col gap-2 mt-2">
+<span class="font-['JetBrains_Mono'] text-[10px] text-slate-500 uppercase font-bold tracking-wider px-1">Account &amp; Protection Preferences</span>
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm flex flex-col divide-y divide-slate-100">
+<!-- Setting 1: Language -->
+<div class="p-3.5 flex items-center justify-between hover:bg-slate-50 active:bg-slate-100 transition-colors cursor-pointer" id="opt-language">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-yellow-100 text-amber-800 border border-yellow-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">record_voice_over</span>
+</div>
+<div class="flex flex-col">
+<span class="font-['JetBrains_Mono'] text-[13px] text-slate-900 font-semibold">Audio Language</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-500">Text-to-Speech &amp; Guidance</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-['Inter'] text-[13px] text-amber-800 font-bold">English / हिंदी</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">tune</span>
+</div>
+</div>
+<!-- Setting 2: Emergency SOS -->
+<div class="p-3.5 flex items-center justify-between hover:bg-slate-50 active:bg-slate-100 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-red-100 border border-red-200 flex items-center justify-center text-red-600">
+<span class="material-symbols-outlined text-[18px]">emergency</span>
+</div>
+<div class="flex flex-col">
+<span class="font-['JetBrains_Mono'] text-[13px] text-slate-900 font-semibold">Emergency SOS Contact</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-500">Deepa Patel (Spouse) • +91 99••• 8101</span>
+</div>
+</div>
+<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-['JetBrains_Mono'] px-2 py-0.5 rounded uppercase font-bold">READY</span>
+</div>
+<!-- Setting 3: Payout Account -->
+<div class="p-3.5 flex items-center justify-between hover:bg-slate-50 active:bg-slate-100 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-['JetBrains_Mono'] text-[13px] text-slate-900 font-semibold">Payout Bank Account</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-500">patel.ramesh@okaxis • State Bank</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-emerald-700 font-bold font-['JetBrains_Mono'] text-[10px]">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+<span>UPI VERIFIED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Security & Fair Work Seal -->
+<div class="mt-1 p-3.5 bg-white border border-slate-200 rounded-xl flex items-center justify-between text-slate-600 shadow-sm">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-amber-600 text-[22px]">shield_with_heart</span>
+<div class="flex flex-col">
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-slate-900 font-bold tracking-wider">SDG 8 Fair Wage Protected</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-slate-500">Immutable Smart Escrow Ledger ID: #0x82...FA12</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">lock</span>
+</div>
+</div>
+<!-- Interactive Modal for Anonymous Review Prompt -->
+<div class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex-col justify-end p-4" id="review-modal">
+<div class="bg-white border border-slate-200 p-5 rounded-2xl flex flex-col gap-3.5 shadow-2xl">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center gap-1.5 text-amber-700">
+<span class="material-symbols-outlined text-[20px]">lock_person</span>
+<span class="font-['JetBrains_Mono'] text-[11px] uppercase font-bold tracking-wider">Encrypted Worker Review</span>
+</div>
+<button class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700" id="btn-close-modal">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-['Inter'] text-[16px] font-bold text-slate-900">Site 4B Safety &amp; Contractor Rating</span>
+<p class="font-['JetBrains_Mono'] text-[11px] text-slate-500">Your identity is completely stripped before submission. Admins only see aggregated score trends.</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-['JetBrains_Mono'] text-[12px] text-slate-900 font-semibold">1. Were adequate welding masks &amp; eye gear provided?</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="review-pill py-2 px-3 rounded-lg bg-slate-100 text-slate-800 font-['JetBrains_Mono'] text-[12px] font-semibold border border-slate-200 hover:bg-yellow-100">Yes, Complete PPE</button>
+<button class="review-pill py-2 px-3 rounded-lg bg-slate-100 text-slate-800 font-['JetBrains_Mono'] text-[12px] font-semibold border border-slate-200 hover:bg-yellow-100">No / Incomplete</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-['JetBrains_Mono'] text-[12px] text-slate-900 font-semibold">2. Clean drinking water on site?</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="review-pill py-2 px-3 rounded-lg bg-slate-100 text-slate-800 font-['JetBrains_Mono'] text-[12px] font-semibold border border-slate-200 hover:bg-yellow-100">Verified Chilled</button>
+<button class="review-pill py-2 px-3 rounded-lg bg-slate-100 text-slate-800 font-['JetBrains_Mono'] text-[12px] font-semibold border border-slate-200 hover:bg-yellow-100">No Clean Water</button>
+</div>
+</div>
+<button class="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-950 py-3 rounded-xl font-['Inter'] text-[14px] font-bold shadow-md mt-1" id="btn-submit-review">
+            Submit Anonymously (+50 XP)
+          </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-white/95 backdrop-blur-xl border-t border-slate-200 shadow-md">
+<div class="flex justify-around items-center h-16 px-2">
+<a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-slate-500 transition-colors hover:text-slate-900" data-path="jobs" href="#">
+<span class="material-symbols-outlined text-[22px]">work_outline</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-semibold">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-slate-500 transition-colors hover:text-slate-900" data-path="active-shift" href="#">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-semibold">Shift</span>
+</a>
+<a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-slate-500 transition-colors hover:text-slate-900" data-path="reviews" href="#">
+<span class="material-symbols-outlined text-[22px]">rate_review</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase font-semibold">Reviews</span>
+</a>
+<a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 transition-colors text-amber-600 font-bold" data-path="my-profile" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+    (function() {
+      const openBtn = document.getElementById('btn-open-review');
+      const closeBtn = document.getElementById('btn-close-modal');
+      const modal = document.getElementById('review-modal');
+      const submitBtn = document.getElementById('btn-submit-review');
+      const pills = document.querySelectorAll('.review-pill');
+
+      if (openBtn && modal) {
+        openBtn.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        });
+      }
+
+      if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        });
+      }
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', function() {
+          const parent = this.parentElement;
+          parent.querySelectorAll('.review-pill').forEach(btn => {
+            btn.classList.remove('bg-yellow-400', 'text-slate-950', 'border-yellow-500');
+            btn.classList.add('bg-slate-100', 'text-slate-800', 'border-slate-200');
+          });
+          this.classList.remove('bg-slate-100', 'text-slate-800', 'border-slate-200');
+          this.classList.add('bg-yellow-400', 'text-slate-950', 'border-yellow-500');
+        });
+      });
+
+      if (submitBtn && modal) {
+        submitBtn.addEventListener('click', () => {
+          submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span> Validating ZK-Proof...';
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            submitBtn.innerHTML = 'Submit Anonymously (+50 XP)';
+            if (openBtn) {
+              openBtn.parentElement.classList.add('opacity-60', 'pointer-events-none');
+              openBtn.textContent = 'Feedback Logged & Sealed';
+            }
+          }, 900);
+        });
+      }
+
+      // Interactive Language Audio Toggle
+      const langBtn = document.getElementById('opt-language');
+      if (langBtn) {
+        let isHindi = false;
+        langBtn.addEventListener('click', () => {
+          isHindi = !isHindi;
+          const target = langBtn.querySelector('.font-bold');
+          if (target) {
+            target.textContent = isHindi ? 'हिंदी / English' : 'English / हिंदी';
+          }
+        });
+      }
+    })();
+  </script>
+</body></html>

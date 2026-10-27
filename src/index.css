@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ====== CSS Custom Properties ====== */
+:root {
+  /* FairShift Dark Theme (default) */
+  --fs-bg: #09090B;
+  --fs-surface: #18181B;
+  --fs-surface-elevated: #27272A;
+  --fs-surface-subtle: #3F3F46;
+  --fs-primary: #FACC15;
+  --fs-primary-hover: #EAB308;
+  --fs-emerald: #10B981;
+  --fs-rose: #F43F5E;
+  --fs-cyan: #06B6D4;
+  --fs-fg: #FAFAFA;
+  --fs-fg-muted: #A1A1AA;
+  --fs-border: #27272A;
+  --fs-border-hover: #3F3F46;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--fs-bg);
+  color: var(--fs-fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* JetBrains Mono for data */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--fs-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--fs-surface-subtle);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fs-fg-muted);
+}
+
+/* Utility classes */
+.text-caps {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.data-metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Industrial hard shadow for elevated elements */
+.shadow-hard {
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+.shadow-hard-lg {
+  box-shadow: 8px 8px 0px 0px #000000;
+}
+
+/* Status badge base */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.badge-success {
+  background: rgba(6, 78, 59, 0.3);
+  border: 1px solid #10B981;
+  color: #34D399;
+}
+.badge-alert {
+  background: rgba(136, 19, 55, 0.3);
+  border: 1px solid #F43F5E;
+  color: #FB7185;
+}
+.badge-amber {
+  background: rgba(120, 53, 15, 0.3);
+  border: 1px solid #FACC15;
+  color: #FDE047;
+}
+.badge-cyan {
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid #06B6D4;
+  color: #22D3EE;
+}
+
+/* Button press effect */
+.btn-press:active {
+  transform: translate(1px, 1px);
+}
+
+/* Light theme overrides for Field Utility screens */
+.theme-light {
+  --fs-bg: #F8FAFC;
+  --fs-surface: #FFFFFF;
+  --fs-surface-elevated: #F1F5F9;
+  --fs-surface-subtle: #E2E8F0;
+  --fs-primary: #EAB308;
+  --fs-primary-hover: #CA8A04;
+  --fs-fg: #0F172A;
+  --fs-fg-muted: #64748B;
+  --fs-border: #E2E8F0;
+  --fs-border-hover: #CBD5E1;
+}
